@@ -1,0 +1,61 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756813041550,1518,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,false,,345,306,1,1,https://buzz.pazl.info/buzz-api/verify-otp,1515,0,1293
+1756813043345,179,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,true,,4344,193,1,1,https://buzz.pazl.info/buzz-api/countries,179,0,0
+1756813044731,151,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,false,,293,200,2,2,https://buzz.pazl.info/buzz-api/customer/profile,151,0,0
+1756813044641,479,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,false,,345,306,2,2,https://buzz.pazl.info/buzz-api/verify-otp,479,0,256
+1756813045697,47,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,true,,4344,193,2,2,https://buzz.pazl.info/buzz-api/countries,47,0,0
+1756813046107,34,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,false,,293,200,2,2,https://buzz.pazl.info/buzz-api/customer/profile,34,0,0
+1756813046326,36,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,false,,293,192,2,2,https://buzz.pazl.info/buzz-api/category,36,0,0
+1756813047786,347,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,false,,293,192,3,3,https://buzz.pazl.info/buzz-api/category,347,0,0
+1756813047131,1004,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,false,,345,306,3,3,https://buzz.pazl.info/buzz-api/verify-otp,1004,0,602
+1756813048319,360,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,360,0,0
+1756813048835,318,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,318,0,0
+1756813049150,47,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,true,,4344,193,3,3,https://buzz.pazl.info/buzz-api/countries,47,0,0
+1756813049267,303,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-1,text,false,,293,352,3,3,https://buzz.pazl.info/buzz-api/category,303,0,0
+1756813049755,321,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-2,text,false,,293,351,3,3,https://buzz.pazl.info/buzz-api/category,321,0,0
+1756813050535,354,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,false,,345,306,2,2,https://buzz.pazl.info/buzz-api/verify-otp,354,0,311
+1756813051175,48,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,false,,293,200,2,2,https://buzz.pazl.info/buzz-api/customer/profile,48,0,0
+1756813051840,35,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,false,,293,192,2,2,https://buzz.pazl.info/buzz-api/category,35,0,0
+1756813052373,30,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,false,,293,357,2,2,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756813053165,103,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,true,,4344,193,3,3,https://buzz.pazl.info/buzz-api/countries,103,0,0
+1756813054114,202,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-3,text,false,,293,352,3,3,https://buzz.pazl.info/buzz-api/category,202,0,0
+1756813054309,598,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,false,,345,306,2,2,https://buzz.pazl.info/buzz-api/verify-otp,598,0,381
+1756813054968,65,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,false,,293,200,2,2,https://buzz.pazl.info/buzz-api/customer/profile,65,0,0
+1756813055461,178,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,true,,4344,193,2,2,https://buzz.pazl.info/buzz-api/countries,178,0,0
+1756813055646,416,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,false,,293,192,3,3,https://buzz.pazl.info/buzz-api/category,416,0,0
+1756813056087,37,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,false,,293,200,3,3,https://buzz.pazl.info/buzz-api/customer/profile,37,0,0
+1756813055795,633,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,false,,345,306,3,3,https://buzz.pazl.info/buzz-api/verify-otp,633,0,337
+1756813056849,129,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,129,0,0
+1756813057536,238,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,false,,293,192,3,3,https://buzz.pazl.info/buzz-api/category,238,0,0
+1756813058135,234,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,true,,4344,193,3,3,https://buzz.pazl.info/buzz-api/countries,234,0,0
+1756813058812,96,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-4,text,false,,293,352,4,4,https://buzz.pazl.info/buzz-api/category,96,0,0
+1756813058944,69,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,69,0,0
+1756813059772,184,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,false,,293,200,3,3,https://buzz.pazl.info/buzz-api/customer/profile,183,0,0
+1756813059003,1318,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,false,,345,306,3,3,https://buzz.pazl.info/buzz-api/verify-otp,1318,0,962
+1756813059957,365,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-5,text,false,,293,352,3,3,https://buzz.pazl.info/buzz-api/category,365,0,0
+1756813061226,134,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,true,,4344,193,2,2,https://buzz.pazl.info/buzz-api/countries,134,0,0
+1756813061194,166,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,false,,293,192,2,2,https://buzz.pazl.info/buzz-api/category,166,0,0
+1756813062553,59,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,59,0,0
+1756813062608,208,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,false,,293,200,3,3,https://buzz.pazl.info/buzz-api/customer/profile,208,0,0
+1756813063193,302,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,false,,293,192,3,3,https://buzz.pazl.info/buzz-api/category,301,0,0
+1756813063490,46,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-6,text,false,,293,352,3,3,https://buzz.pazl.info/buzz-api/category,46,0,0
+1756813063191,711,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,false,,345,306,2,2,https://buzz.pazl.info/buzz-api/verify-otp,711,0,352
+1756813065672,369,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,369,0,0
+1756813066020,75,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,true,,4344,193,3,3,https://buzz.pazl.info/buzz-api/countries,75,0,0
+1756813067028,250,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,false,,293,200,3,3,https://buzz.pazl.info/buzz-api/customer/profile,250,0,0
+1756813066625,654,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,false,,345,306,3,3,https://buzz.pazl.info/buzz-api/verify-otp,654,0,421
+1756813068170,174,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-7,text,false,,293,352,4,4,https://buzz.pazl.info/buzz-api/category,173,0,0
+1756813068350,146,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,false,,293,192,3,3,https://buzz.pazl.info/buzz-api/category,146,0,0
+1756813068489,50,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,true,,4344,193,3,3,https://buzz.pazl.info/buzz-api/countries,50,0,0
+1756813068572,653,Verify OTP (Predefined Numbers - No SMS),400,Bad Request,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,false,,345,306,3,3,https://buzz.pazl.info/buzz-api/verify-otp,653,0,401
+1756813069240,192,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,false,,293,357,3,3,https://buzz.pazl.info/buzz-api/customer/profile,192,0,0
+1756813069748,109,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,false,,293,200,3,3,https://buzz.pazl.info/buzz-api/customer/profile,109,0,0
+1756813069854,197,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-8,text,false,,293,352,3,3,https://buzz.pazl.info/buzz-api/category,197,0,0
+1756813070510,163,Get Countries,200,OK,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,true,,4344,193,2,2,https://buzz.pazl.info/buzz-api/countries,163,0,0
+1756813071012,29,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,false,,293,192,2,2,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756813071412,30,Get Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,false,,293,200,2,2,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756813071672,36,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,false,,293,357,2,2,https://buzz.pazl.info/buzz-api/customer/profile,36,0,0
+1756813071810,34,Get Categories,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,false,,293,192,2,2,https://buzz.pazl.info/buzz-api/category,34,0,0
+1756813072482,34,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-9,text,false,,293,350,2,2,https://buzz.pazl.info/buzz-api/category,34,0,0
+1756813072648,29,Update Customer Profile,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,false,,293,358,1,1,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756813074007,437,Create Category,403,Forbidden,BUZZ API - 10 Users (Predefined Numbers) 1-10,text,false,,293,353,1,1,https://buzz.pazl.info/buzz-api/category,436,0,0

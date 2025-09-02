@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756788689498,1611,Send OTP - FIXED,403,Forbidden,Authentication Only - FIXED 1-1,text,false,,296,203,1,1,https://buzz.pazl.info/send-otp,1606,0,1227
+1756788691117,396,Verify OTP - FIXED,403,Forbidden,Authentication Only - FIXED 1-1,text,false,,296,205,1,1,https://buzz.pazl.info/verify-otp,396,0,0

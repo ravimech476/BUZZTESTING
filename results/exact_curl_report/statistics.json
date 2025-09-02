@@ -1,0 +1,50 @@
+{
+  "Verify OTP - Exact Curl" : {
+    "transaction" : "Verify OTP - Exact Curl",
+    "sampleCount" : 1,
+    "errorCount" : 1,
+    "errorPct" : 100.0,
+    "meanResTime" : 281.0,
+    "medianResTime" : 281.0,
+    "minResTime" : 281.0,
+    "maxResTime" : 281.0,
+    "pct1ResTime" : 281.0,
+    "pct2ResTime" : 281.0,
+    "pct3ResTime" : 281.0,
+    "throughput" : 3.558718861209964,
+    "receivedKBytesPerSec" : 1.1190502669039144,
+    "sentKBytesPerSec" : 0.6533585409252668
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 2,
+    "errorCount" : 2,
+    "errorPct" : 100.0,
+    "meanResTime" : 636.0,
+    "medianResTime" : 636.0,
+    "minResTime" : 281.0,
+    "maxResTime" : 991.0,
+    "pct1ResTime" : 991.0,
+    "pct2ResTime" : 991.0,
+    "pct3ResTime" : 991.0,
+    "throughput" : 0.6103143118706134,
+    "receivedKBytesPerSec" : 0.19459728791577663,
+    "sentKBytesPerSec" : 0.11145388312480928
+  },
+  "Send OTP - Exact Curl" : {
+    "transaction" : "Send OTP - Exact Curl",
+    "sampleCount" : 1,
+    "errorCount" : 1,
+    "errorPct" : 100.0,
+    "meanResTime" : 991.0,
+    "medianResTime" : 991.0,
+    "minResTime" : 991.0,
+    "maxResTime" : 991.0,
+    "pct1ResTime" : 991.0,
+    "pct2ResTime" : 991.0,
+    "pct3ResTime" : 991.0,
+    "throughput" : 1.0090817356205852,
+    "receivedKBytesPerSec" : 0.32617778758829463,
+    "sentKBytesPerSec" : 0.18329023713420786
+  }
+}

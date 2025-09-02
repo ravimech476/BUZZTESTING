@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756795560241,3775,Send OTP - Fixed JSON,200,OK,Authentication - Fixed JSON 1-1,text,true,,363,270,1,1,https://buzz.pazl.info/buzz-api/send-otp,3770,0,3492
+1756795567025,148,Verify OTP - Fixed JSON,200,OK,Authentication - Fixed JSON 1-1,text,true,,532,291,1,1,https://buzz.pazl.info/buzz-api/verify-otp,148,0,0

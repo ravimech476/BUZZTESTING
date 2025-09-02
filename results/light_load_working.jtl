@@ -1,0 +1,183 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756796205740,558,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-1,text,true,,4344,197,1,2,https://buzz.pazl.info/buzz-api/countries,556,0,488
+1756796207468,209,Send OTP (Working),200,OK,1. Authentication (Working Config) 1-1,text,true,,363,270,1,3,https://buzz.pazl.info/buzz-api/send-otp,209,0,117
+1756796208139,29,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,198,2,3,https://buzz.pazl.info/buzz-api/app-config,29,0,0
+1756796208496,126,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-2,text,true,,4344,197,2,3,https://buzz.pazl.info/buzz-api/countries,126,0,86
+1756796209455,28,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,204,2,3,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796210423,331,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,196,3,4,https://buzz.pazl.info/buzz-api/category,331,0,0
+1756796210570,184,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,198,3,4,https://buzz.pazl.info/buzz-api/app-config,184,0,0
+1756796210678,76,Verify OTP and Get JWT (Working),200,OK,1. Authentication (Working Config) 1-1,text,true,,532,291,1,4,https://buzz.pazl.info/buzz-api/verify-otp,76,0,0
+1756796211563,173,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-3,text,true,,4344,197,3,3,https://buzz.pazl.info/buzz-api/countries,173,0,78
+1756796212634,30,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,353,3,3,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796212772,29,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,204,3,3,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796212885,33,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,198,3,3,https://buzz.pazl.info/buzz-api/app-config,33,0,0
+1756796213446,32,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,32,0,0
+1756796213807,35,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,204,4,4,https://buzz.pazl.info/buzz-api/customer/profile,35,0,0
+1756796214032,33,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,33,0,0
+1756796214087,32,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,353,4,4,https://buzz.pazl.info/buzz-api/customer/profile,32,0,0
+1756796214077,119,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-4,text,true,,4344,197,4,4,https://buzz.pazl.info/buzz-api/countries,119,0,73
+1756796214330,50,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,348,4,4,https://buzz.pazl.info/buzz-api/category,50,0,0
+1756796215064,29,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,353,4,4,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796215292,66,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,348,4,4,https://buzz.pazl.info/buzz-api/category,66,0,0
+1756796215569,30,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,348,4,4,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796215779,31,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,198,4,4,https://buzz.pazl.info/buzz-api/app-config,31,0,0
+1756796216087,38,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-1,text,true,,4344,197,4,4,https://buzz.pazl.info/buzz-api/countries,38,0,0
+1756796216596,39,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-2,text,true,,4344,197,5,5,https://buzz.pazl.info/buzz-api/countries,39,0,0
+1756796216836,42,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-3,text,true,,4344,197,5,5,https://buzz.pazl.info/buzz-api/countries,42,0,0
+1756796217204,101,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-5,text,true,,4344,197,5,5,https://buzz.pazl.info/buzz-api/countries,101,0,67
+1756796217502,34,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,204,5,5,https://buzz.pazl.info/buzz-api/customer/profile,34,0,0
+1756796217606,250,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,250,0,0
+1756796218202,105,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,105,0,0
+1756796218541,55,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,54,0,0
+1756796218672,31,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,204,5,5,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796218969,28,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,28,0,0
+1756796219228,61,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,204,5,5,https://buzz.pazl.info/buzz-api/customer/profile,61,0,0
+1756796219302,31,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,196,5,5,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796219605,30,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756796219773,132,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,132,0,0
+1756796219838,67,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,204,6,6,https://buzz.pazl.info/buzz-api/customer/profile,67,0,0
+1756796220183,37,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,37,0,0
+1756796220586,28,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,204,6,6,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796220619,31,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796220697,28,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796220730,30,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796220913,223,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,223,0,0
+1756796220952,258,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-6,text,true,,4344,197,6,6,https://buzz.pazl.info/buzz-api/countries,258,0,221
+1756796221385,61,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,60,0,0
+1756796221857,37,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,37,0,0
+1756796221890,58,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,58,0,0
+1756796221841,107,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-4,text,true,,4344,197,6,6,https://buzz.pazl.info/buzz-api/countries,107,0,0
+1756796222357,212,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-3,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,212,0,0
+1756796222512,57,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,57,0,0
+1756796222558,37,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-2,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,37,0,0
+1756796222674,35,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,35,0,0
+1756796223037,83,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,83,0,0
+1756796223382,28,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796223556,32,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,32,0,0
+1756796223533,92,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-7,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,92,0,58
+1756796223779,30,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,30,0,0
+1756796223963,30,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796224191,30,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756796224273,41,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-5,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,41,0,0
+1756796224355,27,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,27,0,0
+1756796224440,34,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,34,0,0
+1756796224705,28,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,28,0,0
+1756796224800,36,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-1,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,36,0,0
+1756796225074,28,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796225424,88,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,196,8,8,https://buzz.pazl.info/buzz-api/category,88,0,0
+1756796225461,51,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,204,8,8,https://buzz.pazl.info/buzz-api/customer/profile,51,0,0
+1756796225498,38,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,196,8,8,https://buzz.pazl.info/buzz-api/category,38,0,0
+1756796225788,54,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,196,8,8,https://buzz.pazl.info/buzz-api/category,54,0,0
+1756796225837,35,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,198,8,8,https://buzz.pazl.info/buzz-api/app-config,35,0,0
+1756796225937,319,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,196,8,8,https://buzz.pazl.info/buzz-api/category,319,0,0
+1756796225978,278,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,204,8,8,https://buzz.pazl.info/buzz-api/customer/profile,278,0,0
+1756796226353,28,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,353,8,8,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796226486,31,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,353,8,8,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796226518,29,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,198,8,8,https://buzz.pazl.info/buzz-api/app-config,29,0,0
+1756796226673,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,347,8,8,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796226985,32,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,353,8,8,https://buzz.pazl.info/buzz-api/customer/profile,32,0,0
+1756796227008,30,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,196,8,8,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796227087,28,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-2,text,false,,293,348,8,8,https://buzz.pazl.info/buzz-api/category,28,0,0
+1756796227125,116,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-8,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,116,0,78
+1756796227434,34,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,34,0,0
+1756796227659,28,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,28,0,0
+1756796227680,37,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-6,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,37,0,0
+1756796227746,31,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796228020,35,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,35,0,0
+1756796228280,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-3,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796228433,32,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,32,0,0
+1756796228685,109,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,109,0,0
+1756796229153,283,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,283,0,0
+1756796228963,473,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,473,0,0
+1756796228934,502,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,502,0,0
+1756796229589,42,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-4,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,41,0,0
+1756796229639,28,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,28,0,0
+1756796229661,31,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796230651,254,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,254,0,0
+1756796230531,374,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,374,0,0
+1756796230875,33,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,33,0,0
+1756796230830,78,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,78,0,0
+1756796230903,241,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,241,0,0
+1756796231024,248,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-9,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,247,0,157
+1756796231386,80,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,353,8,8,https://buzz.pazl.info/buzz-api/customer/profile,80,0,0
+1756796231648,77,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-1,text,false,,293,348,8,8,https://buzz.pazl.info/buzz-api/category,77,0,0
+1756796232034,50,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,50,0,0
+1756796232155,32,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,32,0,0
+1756796232360,145,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,145,0,0
+1756796232370,216,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-10,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,216,0,177
+1756796232560,39,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,39,0,0
+1756796232684,36,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-7,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,36,0,0
+1756796232982,132,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,132,0,0
+1756796233162,220,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,219,0,0
+1756796233379,54,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,54,0,0
+1756796233454,70,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,70,0,0
+1756796233527,35,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-5,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,35,0,0
+1756796233651,29,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796233704,31,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,31,0,0
+1756796233938,42,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-8,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,42,0,0
+1756796234142,31,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796234380,67,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,67,0,0
+1756796234467,30,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,30,0,0
+1756796234471,37,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-6,text,true,,4344,197,7,7,https://buzz.pazl.info/buzz-api/countries,37,0,0
+1756796234493,30,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,353,7,7,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756796234798,29,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796234872,30,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,198,7,7,https://buzz.pazl.info/buzz-api/app-config,30,0,0
+1756796235043,29,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,196,7,7,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796235194,31,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,204,7,7,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796235371,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-4,text,false,,293,348,7,7,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796235397,35,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,35,0,0
+1756796235657,30,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,204,6,6,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796235765,31,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796235842,39,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,39,0,0
+1756796235951,243,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,198,6,6,https://buzz.pazl.info/buzz-api/app-config,243,0,0
+1756796236036,158,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,158,0,0
+1756796236073,121,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,121,0,0
+1756796236042,152,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,152,0,0
+1756796236592,30,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,30,0,0
+1756796236616,82,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,204,6,6,https://buzz.pazl.info/buzz-api/customer/profile,82,0,0
+1756796236864,36,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,36,0,0
+1756796236907,113,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,113,0,0
+1756796237481,79,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-7,text,true,,4344,197,6,6,https://buzz.pazl.info/buzz-api/countries,79,0,0
+1756796237466,94,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-9,text,true,,4344,197,6,6,https://buzz.pazl.info/buzz-api/countries,94,0,0
+1756796237715,29,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,353,6,6,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796237885,29,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,355,6,6,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796238339,31,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,196,6,6,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796238538,29,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-5,text,false,,293,348,6,6,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796238696,33,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,348,5,5,https://buzz.pazl.info/buzz-api/category,33,0,0
+1756796239022,29,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,29,0,0
+1756796239328,157,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,157,0,0
+1756796239677,200,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,353,5,5,https://buzz.pazl.info/buzz-api/customer/profile,200,0,0
+1756796239829,50,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,350,5,5,https://buzz.pazl.info/buzz-api/category,50,0,0
+1756796239893,413,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,204,5,5,https://buzz.pazl.info/buzz-api/customer/profile,413,0,0
+1756796240335,69,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-8,text,true,,4344,197,5,5,https://buzz.pazl.info/buzz-api/countries,69,0,0
+1756796240710,30,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,204,5,5,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796241168,29,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,196,5,5,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796241299,38,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-10,text,true,,4344,197,5,5,https://buzz.pazl.info/buzz-api/countries,38,0,0
+1756796241637,29,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,198,5,5,https://buzz.pazl.info/buzz-api/app-config,29,0,0
+1756796241664,29,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-6,text,false,,293,348,5,5,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796241860,39,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,353,4,4,https://buzz.pazl.info/buzz-api/customer/profile,38,0,0
+1756796242062,29,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796242096,30,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,198,4,4,https://buzz.pazl.info/buzz-api/app-config,30,0,0
+1756796242361,29,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,347,4,4,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796242441,30,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,204,4,4,https://buzz.pazl.info/buzz-api/customer/profile,30,0,0
+1756796243220,33,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,353,4,4,https://buzz.pazl.info/buzz-api/customer/profile,33,0,0
+1756796243573,38,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-9,text,true,,4344,197,4,4,https://buzz.pazl.info/buzz-api/countries,38,0,0
+1756796243757,168,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,204,4,4,https://buzz.pazl.info/buzz-api/customer/profile,168,0,0
+1756796244082,29,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796244636,38,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,198,4,4,https://buzz.pazl.info/buzz-api/app-config,38,0,0
+1756796244641,33,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,355,4,4,https://buzz.pazl.info/buzz-api/customer/profile,33,0,0
+1756796244947,34,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,204,4,4,https://buzz.pazl.info/buzz-api/customer/profile,34,0,0
+1756796245131,29,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,29,0,0
+1756796245258,32,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,196,4,4,https://buzz.pazl.info/buzz-api/category,32,0,0
+1756796245448,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-7,text,false,,293,348,4,4,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796245489,31,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,353,3,3,https://buzz.pazl.info/buzz-api/customer/profile,31,0,0
+1756796245704,41,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,350,3,3,https://buzz.pazl.info/buzz-api/category,41,0,0
+1756796246243,29,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,353,3,3,https://buzz.pazl.info/buzz-api/customer/profile,29,0,0
+1756796247114,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-9,text,false,,293,348,3,3,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796247180,105,Get Countries,200,OK,2. Light Load - BUZZ APIs (10 Users) 2-10,text,true,,4344,197,2,2,https://buzz.pazl.info/buzz-api/countries,105,0,0
+1756796247520,31,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-8,text,false,,293,348,2,2,https://buzz.pazl.info/buzz-api/category,31,0,0
+1756796247935,30,Get App Config,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,198,1,1,https://buzz.pazl.info/buzz-api/app-config,30,0,0
+1756796249002,36,Get Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,204,1,1,https://buzz.pazl.info/buzz-api/customer/profile,36,0,0
+1756796249318,35,Get Categories,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,196,1,1,https://buzz.pazl.info/buzz-api/category,35,0,0
+1756796249775,32,Update Customer Profile,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,355,1,1,https://buzz.pazl.info/buzz-api/customer/profile,32,0,0
+1756796250472,53,Create Category,403,Forbidden,2. Light Load - BUZZ APIs (10 Users) 2-10,text,false,,293,350,1,1,https://buzz.pazl.info/buzz-api/category,53,0,0
