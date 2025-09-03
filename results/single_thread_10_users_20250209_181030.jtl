@@ -1,0 +1,61 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756816833241,2197,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,532,290,1,1,https://buzz.pazl.info/buzz-api/verify-otp,2197,0,1934
+1756816836018,616,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,532,290,2,2,https://buzz.pazl.info/buzz-api/verify-otp,616,0,344
+1756816836627,207,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,207,0,0
+1756816837285,393,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,393,0,0
+1756816837673,141,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,141,0,0
+1756816838179,211,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,211,0,0
+1756816838599,199,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,588,337,3,3,https://buzz.pazl.info/buzz-api/category,199,0,0
+1756816839722,205,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,588,337,3,3,https://buzz.pazl.info/buzz-api/category,205,0,0
+1756816839822,106,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,511,500,3,3,https://buzz.pazl.info/buzz-api/customer/profile,106,0,0
+1756816839503,481,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,532,290,3,3,https://buzz.pazl.info/buzz-api/verify-otp,481,0,432
+1756816840536,78,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,511,500,3,3,https://buzz.pazl.info/buzz-api/customer/profile,78,0,0
+1756816840836,452,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,4344,338,3,3,https://buzz.pazl.info/buzz-api/countries,452,0,0
+1756816841281,384,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,384,0,0
+1756816841732,142,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,142,0,0
+1756816841947,87,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-2,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,87,0,0
+1756816842284,405,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,532,290,2,2,https://buzz.pazl.info/buzz-api/verify-otp,405,0,247
+1756816843060,231,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,588,337,2,2,https://buzz.pazl.info/buzz-api/category,231,0,0
+1756816844072,264,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,264,0,0
+1756816844328,142,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,511,500,2,2,https://buzz.pazl.info/buzz-api/customer/profile,142,0,0
+1756816845257,138,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-3,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,138,0,0
+1756816845106,290,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,532,290,3,3,https://buzz.pazl.info/buzz-api/verify-otp,290,0,161
+1756816846038,40,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,40,0,0
+1756816846567,37,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,37,0,0
+1756816846878,42,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,588,337,2,2,https://buzz.pazl.info/buzz-api/category,42,0,0
+1756816847636,174,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,511,500,3,3,https://buzz.pazl.info/buzz-api/customer/profile,174,0,0
+1756816847799,40,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,40,0,0
+1756816848436,48,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,588,337,3,3,https://buzz.pazl.info/buzz-api/category,48,0,0
+1756816848612,227,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-4,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,227,0,0
+1756816848927,728,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,532,290,2,2,https://buzz.pazl.info/buzz-api/verify-otp,728,0,458
+1756816849765,74,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,511,500,2,2,https://buzz.pazl.info/buzz-api/customer/profile,74,0,0
+1756816851073,121,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-5,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,121,0,0
+1756816851187,68,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,68,0,0
+1756816851942,147,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,532,290,2,2,https://buzz.pazl.info/buzz-api/verify-otp,147,0,107
+1756816852253,41,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,41,0,0
+1756816853332,50,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,50,0,0
+1756816853879,34,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,588,337,3,3,https://buzz.pazl.info/buzz-api/category,34,0,0
+1756816854678,38,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,38,0,0
+1756816855061,108,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,532,290,3,3,https://buzz.pazl.info/buzz-api/verify-otp,108,0,69
+1756816856027,135,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,511,500,3,3,https://buzz.pazl.info/buzz-api/customer/profile,135,0,0
+1756816856491,288,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,588,337,4,4,https://buzz.pazl.info/buzz-api/category,287,0,0
+1756816856785,96,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,4344,338,4,4,https://buzz.pazl.info/buzz-api/countries,96,0,0
+1756816856873,287,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,511,500,4,4,https://buzz.pazl.info/buzz-api/customer/profile,287,0,0
+1756816857526,114,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-6,text,true,,531,345,4,4,https://buzz.pazl.info/buzz-api/customer/profile,114,0,0
+1756816858186,275,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-7,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,275,0,0
+1756816858052,530,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,532,290,2,2,https://buzz.pazl.info/buzz-api/verify-otp,530,0,412
+1756816858815,48,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,48,0,0
+1756816859689,544,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,588,337,3,3,https://buzz.pazl.info/buzz-api/category,544,0,0
+1756816859802,784,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,4344,338,3,3,https://buzz.pazl.info/buzz-api/countries,784,0,0
+1756816860920,143,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,511,500,3,3,https://buzz.pazl.info/buzz-api/customer/profile,143,0,0
+1756816860579,545,Verify OTP and Get JWT,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,532,290,3,3,https://buzz.pazl.info/buzz-api/verify-otp,544,0,487
+1756816861181,186,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,186,0,0
+1756816861858,38,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-8,text,true,,531,345,3,3,https://buzz.pazl.info/buzz-api/customer/profile,38,0,0
+1756816862437,42,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,4344,338,2,2,https://buzz.pazl.info/buzz-api/countries,42,0,0
+1756816862693,41,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,588,337,2,2,https://buzz.pazl.info/buzz-api/category,41,0,0
+1756816863229,40,Get Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,40,0,0
+1756816863277,38,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,511,500,2,2,https://buzz.pazl.info/buzz-api/customer/profile,38,0,0
+1756816864569,66,Get Categories,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,588,337,2,2,https://buzz.pazl.info/buzz-api/category,66,0,0
+1756816864518,117,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-9,text,true,,531,345,2,2,https://buzz.pazl.info/buzz-api/customer/profile,117,0,0
+1756816866099,119,Update Customer Profile,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,511,501,1,1,https://buzz.pazl.info/buzz-api/customer/profile,119,0,0
+1756816866844,505,Get Customer Profile (Verify Update),200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-10,text,true,,531,345,1,1,https://buzz.pazl.info/buzz-api/customer/profile,505,0,0
