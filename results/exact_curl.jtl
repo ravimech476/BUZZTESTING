@@ -1,3 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1756795093560,991,Send OTP - Exact Curl,400,Bad Request,Authentication - Exact Curl Match 1-1,text,false,,331,186,1,1,https://buzz.pazl.info/buzz-api/send-otp,985,0,937
-1756795096556,281,Verify OTP - Exact Curl,400,Bad Request,Authentication - Exact Curl Match 1-1,text,false,,322,188,1,1,https://buzz.pazl.info/buzz-api/verify-otp,281,0,0
