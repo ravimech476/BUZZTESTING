@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ Persistent WebSocket Test" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments">Persistent WebSocket connections - NO DISCONNECT - Connections stay alive</stringProp>
+      <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      
+      <!-- CSV Data Configuration -->
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">websocket_test_users.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">phoneNumber,userId,targetUserId,userName</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      
+      <!-- Thread Group - Runs for specified duration keeping connections alive -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Persistent WebSocket Users" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">-1</stringProp>
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <longProp name="ThreadGroup.duration">300</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- WebSocket Open Connection - Only runs once per thread -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Initial Connection Setup" enabled="true"/>
+        <hashTree>
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="Open WebSocket - PERSISTENT" enabled="true">
+            <stringProp name="server">buzz.pazl.info</stringProp>
+            <stringProp name="port">5000</stringProp>
+            <stringProp name="path">/</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="connectTimeout">10000</stringProp>
+            <boolProp name="streamingConnection">false</boolProp>
+            <elementProp name="argumentsPanel" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+          <hashTree/>
+          
+          <!-- Wait after initial connection -->
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Initial Connection Wait" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          
+          <!-- Register User - Only once -->
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Register User - INITIAL" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"register","userId":"${userId}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+          
+          <!-- Read registration response -->
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Read Registration Response" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="responseTimeout">5000</stringProp>
+            <stringProp name="responsePattern">registered|User registered</stringProp>
+            <boolProp name="binaryData">false</boolProp>
+          </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Ongoing Activities - Repeats continuously -->
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Continuous WebSocket Activities" enabled="true"/>
+        <hashTree>
+          
+          <!-- Send periodic heartbeat -->
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Send Heartbeat" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"heartbeat","userId":"${userId}","timestamp":"${__time()}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+          
+          <!-- Read any incoming messages -->
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Listen for Messages" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="responseTimeout">3000</stringProp>
+            <stringProp name="responsePattern">.*</stringProp>
+            <boolProp name="binaryData">false</boolProp>
+          </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+          <hashTree/>
+          
+          <!-- Simulate call activity periodically -->
+          <RandomController guiclass="RandomControllerGui" testclass="RandomController" testname="Random Call Activities" enabled="true"/>
+          <hashTree>
+            
+            <!-- Activity 1: Make a call -->
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Make Call Activity" enabled="true"/>
+            <hashTree>
+              <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Trigger Call" enabled="true">
+                <boolProp name="createNewConnection">false</boolProp>
+                <stringProp name="dataType">Text</stringProp>
+                <stringProp name="requestData">{"type":"call","userId":"${userId}","targetId":"${targetUserId}"}</stringProp>
+              </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+              <hashTree/>
+              
+              <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Read Call Response" enabled="true">
+                <boolProp name="createNewConnection">false</boolProp>
+                <stringProp name="dataType">Text</stringProp>
+                <stringProp name="responseTimeout">5000</stringProp>
+                <stringProp name="responsePattern">incoming_call|Target not available|You are already in a call|Call setup failed</stringProp>
+                <boolProp name="binaryData">false</boolProp>
+              </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+              <hashTree/>
+            </hashTree>
+            
+            <!-- Activity 2: Accept incoming call -->
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Accept Call Activity" enabled="true"/>
+            <hashTree>
+              <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Accept Call" enabled="true">
+                <boolProp name="createNewConnection">false</boolProp>
+                <stringProp name="dataType">Text</stringProp>
+                <stringProp name="requestData">{"type":"accept","userId":"${userId}","targetId":"${targetUserId}","id":"${userId}"}</stringProp>
+              </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+              <hashTree/>
+              
+              <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Read Accept Response" enabled="true">
+                <boolProp name="createNewConnection">false</boolProp>
+                <stringProp name="dataType">Text</stringProp>
+                <stringProp name="responseTimeout">3000</stringProp>
+                <stringProp name="responsePattern">call_accepted|call_rejected|call_ended</stringProp>
+                <boolProp name="binaryData">false</boolProp>
+              </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+              <hashTree/>
+            </hashTree>
+            
+            <!-- Activity 3: Just listen for messages -->
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Listen Only Activity" enabled="true"/>
+            <hashTree>
+              <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Listen for Any Messages" enabled="true">
+                <boolProp name="createNewConnection">false</boolProp>
+                <stringProp name="dataType">Text</stringProp>
+                <stringProp name="responseTimeout">2000</stringProp>
+                <stringProp name="responsePattern">.*</stringProp>
+                <boolProp name="binaryData">false</boolProp>
+              </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+              <hashTree/>
+            </hashTree>
+            
+          </hashTree>
+          
+          <!-- Wait between activities -->
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Activity Interval" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+            <stringProp name="RandomTimer.range">10000</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          
+        </hashTree>
+        
+        <!-- NOTE: NO CLOSE WEBSOCKET SAMPLER - Connections stay alive -->
+        
+      </hashTree>
+      
+      <!-- Simple Listeners -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,67 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756897855126,102,Monitor - Open WebSocket,101,Switching Protocols,Connection Monitors 3-1,,true,,129,158,1,3,null,0,0,102
+1756897855232,1,Monitor - Register User,200,OK,Connection Monitors 3-1,,true,,0,40,1,3,null,0,0,0
+1756897857127,335,Receiver - Open WebSocket,101,Switching Protocols,Call Receivers (Targets) 2-1,,true,,129,158,1,3,null,0,0,335
+1756897857122,340,Caller - Open WebSocket,101,Switching Protocols,Call Initiators (Callers) 1-1,,true,,129,158,1,3,null,0,0,340
+1756897859463,1,Receiver - Register User,200,OK,Call Receivers (Targets) 2-1,,true,,0,40,2,5,null,0,0,0
+1756897859463,1,Caller - Register User,200,OK,Call Initiators (Callers) 1-1,,true,,0,40,2,5,null,0,0,0
+1756897859605,75,Caller - Open WebSocket,101,Switching Protocols,Call Initiators (Callers) 1-2,,true,,129,158,2,5,null,0,0,75
+1756897861100,61,Receiver - Open WebSocket,101,Switching Protocols,Call Receivers (Targets) 2-2,,true,,129,158,2,5,null,0,0,61
+1756897861477,2,Receiver - Read Registration Response,200,OK,Call Receivers (Targets) 2-1,text,true,,162,0,2,5,null,0,0,0
+1756897861477,2,Caller - Read Registration Response,200,OK,Call Initiators (Callers) 1-1,text,true,,162,0,2,5,null,0,0,0
+1756897861696,0,Caller - Register User,200,OK,Call Initiators (Callers) 1-2,,true,,0,40,2,5,null,0,0,0
+1756897863177,0,Receiver - Register User,200,OK,Call Receivers (Targets) 2-2,,true,,0,40,2,5,null,0,0,0
+1756897863697,0,Caller - Read Registration Response,200,OK,Call Initiators (Callers) 1-2,text,true,,162,0,2,5,null,0,0,0
+1756897865178,0,Receiver - Read Registration Response,200,OK,Call Receivers (Targets) 2-2,text,true,,162,0,2,5,null,0,0,0
+1756897865246,1,Send Heartbeat,200,OK,Connection Monitors 3-1,,true,,0,69,1,5,null,0,0,0
+1756897865762,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-1,,true,,0,53,2,5,null,0,0,0
+1756897863488,6001,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897870508,1,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-2,,true,,0,53,2,5,null,0,0,0
+1756897867179,3418,RECEIVER - Listen for Incoming Call,200,OK,Call Receivers (Targets) 2-2,text,true,,138,0,2,5,null,0,0,0
+1756897871235,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-1,text,true,,66,0,2,5,null,0,0,0
+1756897875248,0,Monitor - Listen for Messages/Pings,200,OK,Connection Monitors 3-1,text,true,,162,0,1,5,null,0,0,0
+1756897876400,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-2,text,true,,66,0,2,5,null,0,0,0
+1756897876340,137,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-1,text,true,,0,0,2,5,null,0,0,0
+1756897876585,101,RECEIVER - Process Incoming Call,200,OK,Call Receivers (Targets) 2-2,text,true,,0,0,2,5,null,0,0,0
+1756897872437,6000,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897880437,135,RECEIVER - Listen for Incoming Call,Sampler error: unexpected frame type (ping).,Received: Ping frame with no application data,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897881214,0,RECEIVER - Accept Call,200,OK,Call Receivers (Targets) 2-2,,true,,0,74,2,5,null,0,0,0
+1756897882760,1,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-1,,true,,0,53,2,5,null,0,0,0
+1756897882827,18,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-2,text,true,,0,0,2,5,null,0,0,0
+1756897883216,1,RECEIVER - Listen for Incoming Call,Sampler error: unexpected frame type (ping).,Received: Ping frame with no application data,Call Receivers (Targets) 2-2,,false,,0,0,2,5,null,0,0,0
+1756897885219,0,RECEIVER - Listen for Incoming Call,200,OK,Call Receivers (Targets) 2-2,text,true,,51,0,2,5,null,0,0,0
+1756897885250,0,Send Heartbeat,200,OK,Connection Monitors 3-1,,true,,0,69,1,5,null,0,0,0
+1756897887233,1,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-2,,true,,0,53,2,5,null,0,0,0
+1756897882574,6001,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897888806,0,CALLER - Listen for Response (Accept/Reject/Timeout),Sampler error: unexpected frame type (ping).,Received: Ping frame with no application data,Call Initiators (Callers) 1-1,,false,,0,0,2,5,null,0,0,0
+1756897887221,6000,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-2,,false,,0,0,2,5,null,0,0,0
+1756897893580,0,CALLER - Listen for Response (Accept/Reject/Timeout),Sampler error: unexpected frame type (ping).,Received: Ping frame with no application data,Call Initiators (Callers) 1-2,,false,,0,0,2,5,null,0,0,0
+1756897895252,0,Monitor - Listen for Messages/Pings,200,OK,Connection Monitors 3-1,text,true,,138,0,1,5,null,0,0,0
+1756897890578,6000,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897896627,2,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-1,text,true,,0,0,2,5,null,0,0,0
+1756897900044,1,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-2,text,true,,0,0,2,5,null,0,0,0
+1756897900708,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-1,,true,,0,53,2,5,null,0,0,0
+1756897895227,6001,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-2,,false,,0,0,2,5,null,0,0,0
+1756897898579,6002,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,5,null,0,0,0
+1756897904732,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-1,text,true,,61,0,2,5,null,0,0,0
+1756897905040,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-2,,true,,0,53,2,5,null,0,0,0
+1756897905253,0,Send Heartbeat,200,OK,Connection Monitors 3-1,,true,,0,69,1,5,null,0,0,0
+1756897903234,6000,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-2,,false,,0,0,2,4,null,0,0,0
+1756897910425,2,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-1,text,true,,0,0,2,4,null,0,0,0
+1756897906583,6001,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,2,4,null,0,0,0
+1756897912673,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-2,text,true,,61,0,2,4,null,0,0,0
+1756897917105,1,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-1,,true,,0,53,2,4,null,0,0,0
+1756897911234,6011,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-2,,false,,0,0,2,4,null,0,0,0
+1756897917774,1,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-2,text,true,,0,0,2,3,null,0,0,0
+1756897914586,6009,RECEIVER - Listen for Incoming Call,Websocket I/O error,WebSocket I/O error: Read timed out,Call Receivers (Targets) 2-1,,false,,0,0,1,3,null,0,0,0
+1756897921990,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-2,,true,,0,53,2,2,null,0,0,0
+1756897925461,1,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-1,text,true,,61,0,2,2,null,0,0,0
+1756897928413,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-2,text,true,,61,0,2,2,null,0,0,0
+1756897931163,1,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-1,text,true,,0,0,2,2,null,0,0,0
+1756897936318,1,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-2,text,true,,0,0,2,2,null,0,0,0
+1756897938335,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-1,,true,,0,53,2,2,null,0,0,0
+1756897944725,0,CALLER - Trigger Call,200,OK,Call Initiators (Callers) 1-2,,true,,0,53,2,2,null,0,0,0
+1756897947276,0,CALLER - Listen for Response (Accept/Reject/Timeout),200,OK,Call Initiators (Callers) 1-1,text,true,,138,0,2,2,null,0,0,0
+1756897951962,2,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-1,text,true,,0,0,2,2,null,0,0,0
+1756897952001,0,CALLER - Listen for Response (Accept/Reject/Timeout),Sampler error: unexpected frame type (ping).,Received: Ping frame with no application data,Call Initiators (Callers) 1-2,,false,,0,0,1,1,null,0,0,0
+1756897959285,0,CALLER - Log Call Result,200,OK,Call Initiators (Callers) 1-2,text,true,,0,0,1,1,null,0,0,0

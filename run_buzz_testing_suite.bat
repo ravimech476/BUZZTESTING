@@ -16,21 +16,23 @@ echo 🌐 WEBSOCKET REAL-TIME TESTING:
 echo    [4] WebSocket Performance Test (JSR223 - 20 connections)
 echo    [5] Native WebSocket Test (Plugin - 20 connections) 
 echo    [6] WebSocket Stress Test (100 connections)
-echo    [7] Monitor WebSocket Server Status
+echo    [7] Persistent WebSocket Test (NO DISCONNECT - 5 min)
+echo    [8] Realistic WebSocket Test (PROPER USER INTERACTIONS)
+echo    [9] Monitor WebSocket Server Status
 echo.
 echo 🔄 COMBINED TESTING:
-echo    [8] Full-Stack Test (API + WebSocket)
-echo    [9] Production Simulation Test
+echo    [10] Full-Stack Test (API + WebSocket)
+echo    [11] Production Simulation Test
 echo.
 echo 🛠️  UTILITIES:
-echo    [10] Install WebSocket Plugins
-echo    [11] Check WebSocket Dependencies
-echo    [12] View Test Results
-echo    [13] Clean Results Directory
+echo    [12] Install WebSocket Plugins
+echo    [13] Check WebSocket Dependencies
+echo    [14] View Test Results
+echo    [15] Clean Results Directory
 echo.
 echo    [0] Exit
 echo.
-set /p choice="Select testing option [0-13]: "
+set /p choice="Select testing option [0-15]: "
 
 if "%choice%"=="1" goto :api_standard
 if "%choice%"=="2" goto :api_no_otp
@@ -38,13 +40,15 @@ if "%choice%"=="3" goto :api_stress
 if "%choice%"=="4" goto :websocket_performance
 if "%choice%"=="5" goto :websocket_native
 if "%choice%"=="6" goto :websocket_stress
-if "%choice%"=="7" goto :websocket_monitor
-if "%choice%"=="8" goto :fullstack_test
-if "%choice%"=="9" goto :production_sim
-if "%choice%"=="10" goto :install_plugins
-if "%choice%"=="11" goto :check_deps
-if "%choice%"=="12" goto :view_results
-if "%choice%"=="13" goto :clean_results
+if "%choice%"=="7" goto :websocket_persistent
+if "%choice%"=="8" goto :websocket_realistic
+if "%choice%"=="9" goto :websocket_monitor
+if "%choice%"=="10" goto :fullstack_test
+if "%choice%"=="11" goto :production_sim
+if "%choice%"=="12" goto :install_plugins
+if "%choice%"=="13" goto :check_deps
+if "%choice%"=="14" goto :view_results
+if "%choice%"=="15" goto :clean_results
 if "%choice%"=="0" goto :exit
 goto :invalid_choice
 
@@ -102,6 +106,40 @@ echo.
 set /p confirm="Continue with stress test? [Y/N]: "
 if /I "%confirm%" NEQ "Y" goto :menu_start
 call run_websocket_stress_test.bat
+goto :menu_end
+
+:websocket_persistent
+echo.
+echo 🔗 Running Persistent WebSocket Test (NO DISCONNECT)...
+echo    ⚠️  SPECIAL BEHAVIOR: Connections stay open for 5 minutes
+echo    ├── 3 concurrent WebSocket connections
+echo    ├── Connections remain open throughout test
+echo    ├── Continuous random call activities
+echo    ├── Periodic heartbeat messages
+echo    └── Real-world persistent connection simulation
+echo.
+echo 📊 This test simulates users keeping your app open
+echo    and maintaining WebSocket connections continuously.
+echo.
+pause
+call run_persistent_websocket_test.bat
+goto :menu_end
+
+:websocket_realistic
+echo.
+echo 🎯 Running Realistic WebSocket Test (PROPER USER INTERACTIONS)...
+echo    🚨 IMPORTANT: This test simulates REAL BUZZ call flows!
+echo    ├── 2 CALLERS: Users who initiate calls
+echo    ├── 2 RECEIVERS: Users who listen and respond to calls
+echo    ├── 1 MONITOR: Connection monitoring and ping handling
+echo    ├── REALISTIC: Caller → Receiver → Response flow
+echo    └── OUTCOMES: Accept (70%), Reject (20%), Timeout (10%)
+echo.
+echo 📊 This test fixes the "user calling themselves" issue
+echo    and implements proper BUZZ interaction patterns.
+echo.
+pause
+call run_realistic_websocket_test.bat
 goto :menu_end
 
 :websocket_monitor
@@ -191,7 +229,7 @@ goto :menu_start
 
 :invalid_choice
 echo.
-echo ❌ Invalid choice. Please select a number between 0-13.
+echo ❌ Invalid choice. Please select a number between 0-15.
 pause
 goto :menu_start
 
