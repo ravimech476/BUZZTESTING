@@ -1,0 +1,25 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756890432324,3290,Open WebSocket,Websocket I/O error,WebSocket I/O error: Connection refused: no further information,WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+1756890435580,3184,Open WebSocket,Websocket I/O error,WebSocket I/O error: Connection refused: no further information,WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+1756890438917,3256,Open WebSocket,Websocket I/O error,WebSocket I/O error: Connection refused: no further information,WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Register User,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Register User,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Register User,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Read Registration Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Read Registration Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Read Registration Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Trigger Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Trigger Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Trigger Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Read Call Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Read Call Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Read Call Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Accept Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Accept Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Accept Call,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Read Accept Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Read Accept Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-2,,false,,0,0,3,3,null,0,0,0
+0,0,Read Accept Response,Sampler error,"Sampler configured for using existing connection, but there is no connection",WebSocket Users 1-3,,false,,0,0,3,3,null,0,0,0
+0,0,Close WebSocket,,No connection; nothing to close.,WebSocket Users 1-1,,false,,0,0,3,3,null,0,0,0
+0,0,Close WebSocket,,No connection; nothing to close.,WebSocket Users 1-2,,false,,0,0,2,2,null,0,0,0
+0,0,Close WebSocket,,No connection; nothing to close.,WebSocket Users 1-3,,false,,0,0,1,1,null,0,0,0

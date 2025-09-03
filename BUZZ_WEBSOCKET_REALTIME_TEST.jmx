@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ WebSocket Real-Time Performance Test" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments">Comprehensive WebSocket testing for BUZZ app real-time functionality</stringProp>
+      <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="WEBSOCKET_SERVER" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_SERVER</stringProp>
+            <stringProp name="Argument.value">buzz.pazl.info</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WEBSOCKET_PORT" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_PORT</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="API_BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">API_BASE_URL</stringProp>
+            <stringProp name="Argument.value">https://buzz.pazl.info</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      
+      <!-- CSV Data for Test Users -->
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WebSocket Test Users CSV">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">websocket_test_users.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">phoneNumber,userId,targetUserId,userName</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      
+      <!-- Authentication Setup (Same as your existing API tests) -->
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="Setup - Get JWT Tokens for WebSocket Users" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <!-- Get JWT Token for Testing -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get JWT Token for WebSocket" enabled="true">
+          <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/buzz-api/verify-otp</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{
+  "phoneNumber": "7344312970",
+  "countryCode": "+91",
+  "otp": "123456"
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Headers">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract JWT Token">
+            <stringProp name="JSONPostProcessor.referenceNames">jwt_token</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.data.token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      
+      <!-- Main WebSocket Load Testing Thread Group -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WebSocket Real-Time Connection Test">
+        <intProp name="ThreadGroup.num_threads">20</intProp>
+        <intProp name="ThreadGroup.ramp_time">60</intProp>
+        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">-1</stringProp>
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- WebSocket Open Connection Sampler -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="1. WebSocket Open Connection" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data"></stringProp>
+          <stringProp name="WebSocketSampler.method">open</stringProp>
+        </WebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="WebSocket Connection Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1872721405">WebSocket connection opened successfully</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- WebSocket User Registration -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="2. Register User on WebSocket" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data">{
+  "type": "register",
+  "userId": "${userId}"
+}</stringProp>
+          <stringProp name="WebSocketSampler.method">send</stringProp>
+        </WebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Registration Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="registered">registered</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Wait for Registration to Complete -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for Registration">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- WebSocket Heartbeat Test -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="3. Send Heartbeat" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data">{
+  "type": "heartbeat",
+  "userId": "${userId}",
+  "timestamp": "${__time()}"
+}</stringProp>
+          <stringProp name="WebSocketSampler.method">send</stringProp>
+        </WebSocketSampler>
+        <hashTree/>
+        
+        <!-- WebSocket Call Initiation Test -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="4. Initiate Call" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data">{
+  "type": "call",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": "${__time()}"
+}</stringProp>
+          <stringProp name="WebSocketSampler.method">send</stringProp>
+        </WebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Call Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="call_accepted">call_accepted</stringProp>
+              <stringProp name="incoming_call">incoming_call</stringProp>
+              <stringProp name="error">Target not available</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Wait for Call Response -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for Call Response">
+          <stringProp name="ConstantTimer.delay">3000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- WebSocket Call Accept Test -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="5. Accept Call" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data">{
+  "type": "accept",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": "${__time()}"
+}</stringProp>
+          <stringProp name="WebSocketSampler.method">send</stringProp>
+        </WebSocketSampler>
+        <hashTree/>
+        
+        <!-- Simulate Call Duration -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Simulate Call Duration">
+          <stringProp name="ConstantTimer.delay">10000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- WebSocket Call End Test -->
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="6. End Call" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data">{
+  "type": "end_call",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": "${__time()}"
+}</stringProp>
+          <stringProp name="WebSocketSampler.method">send</stringProp>
+        </WebSocketSampler>
+        <hashTree/>
+        
+        <!-- Loop Delay -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait Between Test Cycles">
+          <stringProp name="ConstantTimer.delay">30000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+      </hashTree>
+      
+      <!-- WebSocket Connection Close -->
+      <TeardownThreadGroup guiclass="TeardownThreadGroupGui" testclass="TeardownThreadGroup" testname="Teardown - Close WebSocket Connections" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </TeardownThreadGroup>
+      <hashTree>
+        <WebSocketSampler guiclass="WebSocketSamplerGui" testclass="WebSocketSampler" testname="Close WebSocket Connection" enabled="true">
+          <stringProp name="WebSocketSampler.server">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="WebSocketSampler.port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="WebSocketSampler.path">/</stringProp>
+          <stringProp name="WebSocketSampler.protocol">ws</stringProp>
+          <boolProp name="WebSocketSampler.use_proxy">false</boolProp>
+          <stringProp name="WebSocketSampler.connection_timeout">5000</stringProp>
+          <stringProp name="WebSocketSampler.request_data"></stringProp>
+          <stringProp name="WebSocketSampler.method">close</stringProp>
+        </WebSocketSampler>
+        <hashTree/>
+      </hashTree>
+      
+      <!-- Listeners for Results -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+        
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/websocket_detailed_results.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/websocket_summary_results.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

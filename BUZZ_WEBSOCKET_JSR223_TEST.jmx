@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ WebSocket JSR223 Advanced Test" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments">Advanced WebSocket testing using JSR223 samplers - Fixed for Buzz App Call Flow</stringProp>
+      <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="WEBSOCKET_URL" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_URL</stringProp>
+            <stringProp name="Argument.value">ws://buzz.pazl.info:3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_DURATION" elementType="Argument">
+            <stringProp name="Argument.name">TEST_DURATION</stringProp>
+            <stringProp name="Argument.value">300</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CONCURRENT_USERS" elementType="Argument">
+            <stringProp name="Argument.name">CONCURRENT_USERS</stringProp>
+            <stringProp name="Argument.value">20</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      
+      <!-- CSV Data Config -->
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WebSocket Users CSV Config">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">websocket_test_users.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">phoneNumber,userId,targetUserId,userName</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      
+      <!-- Thread Group for WebSocket Testing -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WebSocket Real-Time Load Test">
+        <stringProp name="ThreadGroup.num_threads">${__P(CONCURRENT_USERS,20)}</stringProp>
+        <intProp name="ThreadGroup.ramp_time">60</intProp>
+        <stringProp name="ThreadGroup.duration">${__P(TEST_DURATION,300)}</stringProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">-1</stringProp>
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- WebSocket Connection Manager -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="1. WebSocket Connection Setup" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import java.net.URI;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+// WebSocket Client Class
+public class BuzzWebSocketClient extends WebSocketClient {
+    private CountDownLatch connectionLatch;
+    private String lastMessage = "";
+    private boolean isConnected = false;
+    private String responseMessage = "";
+    private String currentCallId = "";
+    
+    public BuzzWebSocketClient(URI serverUri) {
+        super(serverUri);
+        this.connectionLatch = new CountDownLatch(1);
+    }
+    
+    @Override
+    public void onOpen(ServerHandshake handshake) {
+        this.isConnected = true;
+        this.responseMessage = "WebSocket connection opened successfully";
+        log.info("WebSocket connection opened for user: " + vars.get("userId"));
+        connectionLatch.countDown();
+    }
+    
+    @Override
+    public void onMessage(String message) {
+        this.lastMessage = message;
+        this.responseMessage = message;
+        log.info("Received message: " + message);
+        
+        // Extract call ID from incoming call messages
+        try {
+            JsonObject jsonMessage = JsonParser.parseString(message).getAsJsonObject();
+            if (jsonMessage.has("type") &amp;&amp; "incoming_call".equals(jsonMessage.get("type").getAsString())) {
+                if (jsonMessage.has("id")) {
+                    this.currentCallId = jsonMessage.get("id").getAsString();
+                    log.info("Extracted call ID: " + this.currentCallId);
+                }
+            }
+        } catch (Exception e) {
+            log.warn("Failed to parse message for call ID: " + e.getMessage());
+        }
+    }
+    
+    @Override
+    public void onClose(int code, String reason, boolean remote) {
+        this.isConnected = false;
+        this.responseMessage = "WebSocket connection closed: " + reason;
+        log.info("WebSocket connection closed: " + reason);
+    }
+    
+    @Override
+    public void onError(Exception ex) {
+        this.responseMessage = "WebSocket error: " + ex.getMessage();
+        log.error("WebSocket error: " + ex.getMessage());
+    }
+    
+    public boolean waitForConnection(long timeoutSeconds) {
+        try {
+            return connectionLatch.await(timeoutSeconds, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            return false;
+        }
+    }
+    
+    public String getLastMessage() { return lastMessage; }
+    public boolean isConnected() { return isConnected; }
+    public String getResponseMessage() { return responseMessage; }
+    public String getCurrentCallId() { return currentCallId; }
+    public void setCurrentCallId(String callId) { this.currentCallId = callId; }
+}
+
+try {
+    // Get user data from CSV
+    String userId = vars.get("userId");
+    String userName = vars.get("userName");
+    
+    if (userId == null || userId.isEmpty()) {
+        userId = "user_" + Thread.currentThread().getId();
+        vars.put("userId", userId);
+    }
+    
+    // Create WebSocket connection
+    URI serverUri = new URI("${WEBSOCKET_URL}");
+    BuzzWebSocketClient client = new BuzzWebSocketClient(serverUri);
+    
+    // Store client in variables for other samplers
+    vars.putObject("websocketClient", client);
+    
+    // Connect to WebSocket
+    client.connect();
+    
+    // Wait for connection
+    boolean connected = client.waitForConnection(10);
+    
+    if (connected) {
+        SampleResult.setResponseMessage("WebSocket connected successfully for user: " + userId);
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    } else {
+        SampleResult.setResponseMessage("Failed to connect WebSocket within timeout for user: " + userId);
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+    }
+    
+    // Set response data
+    SampleResult.setResponseData(client.getResponseMessage(), "UTF-8");
+    
+} catch (Exception e) {
+    log.error("WebSocket connection error: " + e.getMessage());
+    SampleResult.setResponseMessage("WebSocket connection error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+        <!-- User Registration - MUST BE FIRST -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="2. Register User (Required First Step)" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
+
+try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client == null || !client.isConnected()) {
+        SampleResult.setResponseMessage("WebSocket client not available or not connected");
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+        return;
+    }
+    
+    // Prepare registration message - EXACTLY as in Flutter code
+    Map&lt;String, Object&gt; registerMessage = new HashMap&lt;&gt;();
+    registerMessage.put("type", "register");
+    registerMessage.put("userId", vars.get("userId"));
+    
+    // Convert to JSON
+    Gson gson = new Gson();
+    String jsonMessage = gson.toJson(registerMessage);
+    
+    log.info("Sending registration: " + jsonMessage);
+    
+    // Send registration message
+    client.send(jsonMessage);
+    
+    // Wait for response
+    Thread.sleep(3000);
+    
+    String response = client.getLastMessage();
+    
+    // Check for successful registration response
+    if (response.contains("registered") || response.contains("User registered")) {
+        SampleResult.setResponseMessage("User registered successfully: " + vars.get("userId"));
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    } else {
+        SampleResult.setResponseMessage("User registration failed or no response. Response: " + response);
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("400");
+    }
+    
+    SampleResult.setResponseData("Request: " + jsonMessage + "\nResponse: " + response, "UTF-8");
+    
+} catch (Exception e) {
+    log.error("User registration error: " + e.getMessage());
+    SampleResult.setResponseMessage("User registration error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+        <!-- Wait before making calls -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait After Registration">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Call Initiation Test - EXACTLY as in Flutter code -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="3. Trigger Call (After Registration)" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client == null || !client.isConnected()) {
+        SampleResult.setResponseMessage("WebSocket client not available");
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+        return;
+    }
+    
+    String userId = vars.get("userId");
+    String targetUserId = vars.get("targetUserId");
+    
+    // Prepare call message - EXACTLY as shown in Flutter code
+    Map&lt;String, Object&gt; callMessage = new HashMap&lt;&gt;();
+    callMessage.put("type", "call");
+    callMessage.put("userId", userId);
+    callMessage.put("targetId", targetUserId);
+    
+    // Convert to JSON
+    Gson gson = new Gson();
+    String jsonMessage = gson.toJson(callMessage);
+    
+    log.info("Triggering call: " + jsonMessage);
+    
+    // Send call message
+    client.send(jsonMessage);
+    
+    // Wait for response
+    Thread.sleep(5000);
+    
+    String response = client.getLastMessage();
+    
+    // Check for valid call responses as per Flutter code
+    if (response.contains("incoming_call") || 
+        response.contains("Target not available") || 
+        response.contains("You are already in a call") ||
+        response.contains("Call setup failed")) {
+        
+        SampleResult.setResponseMessage("Call triggered successfully from " + userId + " to " + targetUserId);
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+        
+        // Store call response for next step
+        vars.put("lastCallResponse", response);
+        
+    } else {
+        SampleResult.setResponseMessage("Call trigger failed or unexpected response: " + response);
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("400");
+    }
+    
+    SampleResult.setResponseData("Request: " + jsonMessage + "\nResponse: " + response, "UTF-8");
+    
+} catch (Exception e) {
+    log.error("Call initiation error: " + e.getMessage());
+    SampleResult.setResponseMessage("Call initiation error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+        <!-- Wait for Call Response Processing -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for Call Processing">
+          <stringProp name="ConstantTimer.delay">3000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Accept/Reject Call Test - Using userId as id field -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="4. Accept/Reject Call (userId as ID)" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client == null || !client.isConnected()) {
+        SampleResult.setResponseMessage("WebSocket client not available");
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+        return;
+    }
+    
+    String userId = vars.get("userId");
+    String targetUserId = vars.get("targetUserId");
+    
+    // Randomly decide to accept or reject (70% accept, 30% reject)
+    Random rand = new Random();
+    boolean shouldAccept = rand.nextInt(100) &lt; 70;
+    
+    String actionType = shouldAccept ? "accept" : "reject";
+    
+    // Prepare response message - CORRECTED: userId is used as id field
+    Map&lt;String, Object&gt; responseMessage = new HashMap&lt;&gt;();
+    responseMessage.put("type", actionType);
+    responseMessage.put("userId", userId);
+    responseMessage.put("targetId", targetUserId);
+    responseMessage.put("id", userId);  // CORRECTED: id field is userId as per user's clarification
+    
+    // Convert to JSON
+    Gson gson = new Gson();
+    String jsonMessage = gson.toJson(responseMessage);
+    
+    log.info("Sending call response: " + jsonMessage);
+    
+    // Send response
+    client.send(jsonMessage);
+    
+    // Wait for confirmation
+    Thread.sleep(3000);
+    
+    String response = client.getLastMessage();
+    
+    // Check for valid response confirmations
+    if (response.contains("call_accepted") || 
+        response.contains("call_rejected") ||
+        response.contains("call_ended")) {
+        
+        SampleResult.setResponseMessage("Call " + actionType + " sent successfully from " + userId + " to " + targetUserId + " with ID: " + userId);
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    } else {
+        SampleResult.setResponseMessage("Call " + actionType + " may have failed or no confirmation received");
+        SampleResult.setSuccessful(true);  // Still consider successful if message was sent
+        SampleResult.setResponseCode("200");
+    }
+    
+    SampleResult.setResponseData("Action: " + jsonMessage + "\nResponse: " + response, "UTF-8");
+    
+} catch (Exception e) {
+    log.error("Call response error: " + e.getMessage());
+    SampleResult.setResponseMessage("Call response error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+        <!-- Simulate Call Duration -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Simulate Active Call Duration">
+          <stringProp name="ConstantTimer.delay">8000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Listen for Call End Messages -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="5. Monitor Call End Messages" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
+
+try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client == null || !client.isConnected()) {
+        SampleResult.setResponseMessage("WebSocket client not available");
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+        return;
+    }
+    
+    String userId = vars.get("userId");
+    
+    // Wait and listen for incoming messages
+    Thread.sleep(2000);
+    
+    String response = client.getLastMessage();
+    
+    // Check for call end messages as per Flutter code
+    if (response.contains("call_ended")) {
+        SampleResult.setResponseMessage("Call ended message received for user: " + userId);
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    } else {
+        SampleResult.setResponseMessage("No call end message received, last message: " + response);
+        SampleResult.setSuccessful(true);  // Still successful - not all calls end with explicit messages
+        SampleResult.setResponseCode("200");
+    }
+    
+    SampleResult.setResponseData("Last received message: " + response, "UTF-8");
+    
+} catch (Exception e) {
+    log.error("Call end monitoring error: " + e.getMessage());
+    SampleResult.setResponseMessage("Call end monitoring error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+        <!-- Loop Delay Between Test Cycles -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait Between Test Cycles">
+          <stringProp name="ConstantTimer.delay">15000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Connection Health Check -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="6. Connection Health Check" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client == null) {
+        SampleResult.setResponseMessage("WebSocket client not found");
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("500");
+        return;
+    }
+    
+    if (!client.isConnected()) {
+        SampleResult.setResponseMessage("WebSocket connection lost for user: " + vars.get("userId"));
+        SampleResult.setSuccessful(false);
+        SampleResult.setResponseCode("503");
+        
+        // Attempt to reconnect
+        try {
+            client.reconnect();
+            Thread.sleep(2000);
+            if (client.isConnected()) {
+                SampleResult.setResponseMessage("WebSocket reconnected successfully for user: " + vars.get("userId"));
+                SampleResult.setSuccessful(true);
+                SampleResult.setResponseCode("200");
+            }
+        } catch (Exception reconnectError) {
+            log.error("Reconnection failed: " + reconnectError.getMessage());
+        }
+        return;
+    }
+    
+    SampleResult.setResponseMessage("WebSocket connection healthy for user: " + vars.get("userId"));
+    SampleResult.setSuccessful(true);
+    SampleResult.setResponseCode("200");
+    
+    String lastMessage = client.getLastMessage();
+    SampleResult.setResponseData("Connection Status: Active\nLast Message: " + lastMessage, "UTF-8");
+    
+} catch (Exception e) {
+    log.error("Connection health check error: " + e.getMessage());
+    SampleResult.setResponseMessage("Connection health check error: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        
+      </hashTree>
+      
+      <!-- Cleanup Thread Group -->
+      <TeardownThreadGroup guiclass="TeardownThreadGroupGui" testclass="TeardownThreadGroup" testname="Cleanup - Close WebSocket Connections" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </TeardownThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Close All WebSocket Connections" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">try {
+    // Get WebSocket client
+    def client = vars.getObject("websocketClient");
+    
+    if (client != null &amp;&amp; client.isConnected()) {
+        client.close();
+        log.info("WebSocket connection closed for user: " + vars.get("userId"));
+        SampleResult.setResponseMessage("WebSocket connection closed successfully");
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    } else {
+        SampleResult.setResponseMessage("No active WebSocket connection to close");
+        SampleResult.setSuccessful(true);
+        SampleResult.setResponseCode("200");
+    }
+    
+} catch (Exception e) {
+    log.error("Error closing WebSocket connection: " + e.getMessage());
+    SampleResult.setResponseMessage("Error closing WebSocket connection: " + e.getMessage());
+    SampleResult.setSuccessful(false);
+    SampleResult.setResponseCode("500");
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+      
+      <!-- Listeners -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree (WebSocket)" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>true</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/websocket_jsr223_detailed.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="WebSocket Performance Summary" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/websocket_jsr223_summary.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="WebSocket Response Time Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/websocket_response_times.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

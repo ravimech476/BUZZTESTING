@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ WebSocket Native Plugin Test" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments">WebSocket testing using native JMeter WebSocket plugins</stringProp>
+      <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="WEBSOCKET_SERVER" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_SERVER</stringProp>
+            <stringProp name="Argument.value">buzz.pazl.info</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WEBSOCKET_PORT" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_PORT</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WEBSOCKET_PATH" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_PATH</stringProp>
+            <stringProp name="Argument.value">/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CONCURRENT_USERS" elementType="Argument">
+            <stringProp name="Argument.name">CONCURRENT_USERS</stringProp>
+            <stringProp name="Argument.value">20</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_DURATION" elementType="Argument">
+            <stringProp name="Argument.name">TEST_DURATION</stringProp>
+            <stringProp name="Argument.value">300</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      
+      <!-- CSV Data Configuration -->
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="WebSocket Test Users Data">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">websocket_test_users.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">phoneNumber,userId,targetUserId,userName</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      
+      <!-- Main WebSocket Thread Group -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WebSocket Connection Testing">
+        <intProp name="ThreadGroup.num_threads">${CONCURRENT_USERS}</intProp>
+        <intProp name="ThreadGroup.ramp_time">60</intProp>
+        <longProp name="ThreadGroup.duration">${TEST_DURATION}</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">-1</stringProp>
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- WebSocket Open Connection -->
+        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. Open WebSocket Connection" enabled="true">
+          <stringProp name="host">${WEBSOCKET_SERVER}</stringProp>
+          <stringProp name="port">${WEBSOCKET_PORT}</stringProp>
+          <stringProp name="path">${WEBSOCKET_PATH}</stringProp>
+          <stringProp name="protocol">ws</stringProp>
+          <intProp name="connectTimeout">10000</intProp>
+          <intProp name="readTimeout">6000</intProp>
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="subProtocol"></stringProp>
+          <elementProp name="headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="User-Agent" elementType="Argument">
+                <stringProp name="Argument.name">User-Agent</stringProp>
+                <stringProp name="Argument.value">BUZZ-App-JMeter-Test</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="WebSocket Connection Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="101">101</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">1</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- User Registration Message -->
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="2. Register User" enabled="true">
+          <stringProp name="requestData">{
+  "type": "register",
+  "userId": "${userId}",
+  "timestamp": ${__time()}
+}</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <intProp name="readTimeout">6000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Registration Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="registered">registered</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Wait for Registration -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for Registration">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Heartbeat Message -->
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="3. Send Heartbeat" enabled="true">
+          <stringProp name="requestData">{
+  "type": "heartbeat",
+  "userId": "${userId}",
+  "timestamp": ${__time()}
+}</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <intProp name="readTimeout">3000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree/>
+        
+        <!-- Call Initiation -->
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="4. Initiate Call" enabled="true">
+          <stringProp name="requestData">{
+  "type": "call",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": ${__time()}
+}</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <intProp name="readTimeout">5000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Call Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="incoming_call">incoming_call</stringProp>
+              <stringProp name="call_accepted">call_accepted</stringProp>
+              <stringProp name="Target not available">Target not available</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Wait for Call Response -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait for Call Response">
+          <stringProp name="ConstantTimer.delay">3000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- Random Call Response (Accept/Reject) -->
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Call Response Needed" enabled="true">
+          <stringProp name="IfController.condition">${__Random(1,10)} <= 8</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <!-- Accept Call (80% probability) -->
+          <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="5a. Accept Call" enabled="true">
+            <stringProp name="requestData">{
+  "type": "accept",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": ${__time()}
+}</stringProp>
+            <stringProp name="dataType">Text</stringProp>
+            <intProp name="readTimeout">3000</intProp>
+            <boolProp name="createNewConnection">false</boolProp>
+            <boolProp name="loadDataFromFile">false</boolProp>
+            <stringProp name="dataFile"></stringProp>
+          </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Call Rejection" enabled="true">
+          <stringProp name="IfController.condition">${__Random(1,10)} > 8</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <!-- Reject Call (20% probability) -->
+          <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="5b. Reject Call" enabled="true">
+            <stringProp name="requestData">{
+  "type": "reject",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": ${__time()}
+}</stringProp>
+            <stringProp name="dataType">Text</stringProp>
+            <intProp name="readTimeout">3000</intProp>
+            <boolProp name="createNewConnection">false</boolProp>
+            <boolProp name="loadDataFromFile">false</boolProp>
+            <stringProp name="dataFile"></stringProp>
+          </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Simulate Call Duration -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Simulate Call Duration">
+          <stringProp name="ConstantTimer.delay">${__Random(5000,20000)}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+        <!-- End Call -->
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="6. End Call" enabled="true">
+          <stringProp name="requestData">{
+  "type": "end_call",
+  "userId": "${userId}",
+  "targetId": "${targetUserId}",
+  "timestamp": ${__time()}
+}</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <intProp name="readTimeout">3000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree/>
+        
+        <!-- WebSocket Ping/Pong Test -->
+        <eu.luminis.jmeter.wssampler.PingPongWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.PingPongWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.PingPongWebSocketSampler" testname="7. Ping/Pong Health Check" enabled="true">
+          <stringProp name="pingData">BUZZ-Health-Check</stringProp>
+          <intProp name="readTimeout">5000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+        </eu.luminis.jmeter.wssampler.PingPongWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Ping/Pong Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="BUZZ-Health-Check">BUZZ-Health-Check</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Connection Check -->
+        <eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler" testname="8. Connection Check" enabled="true">
+          <stringProp name="requestData">{
+  "type": "connection_check",
+  "userId": "${userId}",
+  "timestamp": ${__time()}
+}</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <intProp name="readTimeout">3000</intProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+        </eu.luminis.jmeter.wssampler.RequestResponseWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Connection Active Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="connection_active">connection_active</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Loop Delay -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait Before Next Cycle">
+          <stringProp name="ConstantTimer.delay">${__Random(25000,35000)}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        
+      </hashTree>
+      
+      <!-- Cleanup Thread Group -->
+      <TeardownThreadGroup guiclass="TeardownThreadGroupGui" testclass="TeardownThreadGroup" testname="WebSocket Cleanup" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </TeardownThreadGroup>
+      <hashTree>
+        <!-- Close WebSocket Connection -->
+        <eu.luminis.jmeter.wssampler.CloseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.CloseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.CloseWebSocketSampler" testname="Close WebSocket Connection" enabled="true">
+          <intProp name="statusCode">1000</intProp>
+          <stringProp name="reasonPhrase">Test completed</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+        </eu.luminis.jmeter.wssampler.CloseWebSocketSampler>
+        <hashTree/>
+      </hashTree>
+      
+      <!-- Listeners for Results -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree (Native WebSocket)" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>true</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/native_websocket_detailed.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="WebSocket Performance Summary" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/native_websocket_summary.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="ResponseTimeGraphVisualizer" testclass="ResultCollector" testname="WebSocket Response Time Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <n>saveConfig</n>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">results/native_websocket_response_times.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
