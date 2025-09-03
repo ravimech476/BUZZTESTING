@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756877990864,1295,Verify OTP and Get JWT,400,Bad Request,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,false,,345,312,1,1,https://buzz.pazl.info/buzz-api/verify-otp,1294,0,1043
+1756877995504,50,Get Countries,200,OK,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,true,,4344,193,1,1,https://buzz.pazl.info/buzz-api/countries,49,0,0
+1756877996040,260,Get Customer Profile,403,Forbidden,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,false,,293,200,1,1,https://buzz.pazl.info/buzz-api/customer/profile,260,0,0
+1756877998101,205,Get Categories,403,Forbidden,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,false,,293,192,1,1,https://buzz.pazl.info/buzz-api/category,205,0,0
+1756877998541,465,Update Customer Profile,403,Forbidden,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,false,,293,300,1,1,https://buzz.pazl.info/buzz-api/customer/profile,465,0,0
+1756877999375,206,Get Customer Profile (Verify Update),403,Forbidden,BUZZ API Complete Test (Single Thread Group - 10 Different Users) 1-1,text,false,,293,200,1,1,https://buzz.pazl.info/buzz-api/customer/profile,206,0,0

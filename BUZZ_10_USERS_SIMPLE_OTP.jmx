@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ API - 10 Users WITH Send OTP (Modified from Working File)" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ API - 10 Users with Send OTP (Simple Version)" enabled="true">
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -19,7 +19,7 @@
         <stringProp name="variableNames">phoneNumber,countryCode</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BUZZ API Complete Test (Single Thread Group - 10 Different Users)">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BUZZ API Complete Test (10 Users with Send OTP)">
         <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
         <longProp name="ThreadGroup.duration">0</longProp>
@@ -34,7 +34,7 @@
       <hashTree>
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Authentication (Once Per Thread)"/>
         <hashTree>
-          <!-- NEW: Send OTP Step -->
+          <!-- STEP 1: Send OTP -->
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send OTP" enabled="true">
             <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -79,7 +79,7 @@
           </ConstantTimer>
           <hashTree/>
           
-          <!-- EXISTING: Verify OTP Step -->
+          <!-- STEP 2: Verify OTP and Get JWT -->
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verify OTP and Get JWT" enabled="true">
             <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -126,18 +126,6 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
               <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
             </RegexExtractor>
-            <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug JWT Token" enabled="true">
-              <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="script">log.info(&quot;=== JWT TOKEN DEBUG ===&quot;)
-log.info(&quot;JWT Token extracted: &quot; + vars.get(&quot;JWT_TOKEN&quot;))
-log.info(&quot;Phone Number: &quot; + vars.get(&quot;phoneNumber&quot;))
-log.info(&quot;Thread Number: &quot; + vars.get(&quot;__threadNum&quot;))
-log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="cacheKey">false</stringProp>
-            </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -261,32 +249,6 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Debug Update Request Details" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="script">log.info(&quot;=== UPDATE PROFILE REQUEST DEBUG ===&quot;)
-log.info(&quot;Phone Number: &quot; + vars.get(&quot;phoneNumber&quot;))
-log.info(&quot;JWT Token: &quot; + vars.get(&quot;JWT_TOKEN&quot;))
-log.info(&quot;Request JSON: {\&quot;name\&quot;: \&quot;Jmeter Test User\&quot;}&quot;)
-log.info(&quot;Content-Type will be: application/json&quot;)
-log.info(&quot;Authorization header will be: Bearer &quot; + vars.get(&quot;JWT_TOKEN&quot;))</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">false</stringProp>
-          </JSR223PreProcessor>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug Update Response Details" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="script">log.info(&quot;=== UPDATE PROFILE RESPONSE DEBUG ===&quot;)
-log.info(&quot;Response Code: &quot; + prev.getResponseCode())
-log.info(&quot;Response Message: &quot; + prev.getResponseMessage())
-log.info(&quot;Full Response Body: &quot; + prev.getResponseDataAsString())
-log.info(&quot;Request Headers Sent: &quot; + prev.getRequestHeaders())
-log.info(&quot;Actual Request Body Sent: &quot; + prev.getSamplerData())</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">false</stringProp>
-          </JSR223PostProcessor>
-          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Customer Profile (Verify Update)">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
@@ -314,22 +276,6 @@ log.info(&quot;Actual Request Body Sent: &quot; + prev.getSamplerData())</string
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Verify Profile Update" enabled="true">
-            <stringProp name="BeanShellPostProcessor.script">String response = prev.getResponseDataAsString();
-log.info(&quot;Profile after update: &quot; + response);
-
-// Check if name was updated to &quot;Jmeter Test User&quot;
-if (response.contains(&quot;Jmeter Test User&quot;)) {
-    log.info(&quot;SUCCESS: Profile name was updated to &apos;Jmeter Test User&apos;&quot;);
-} else {
-    log.error(&quot;FAILED: Profile name was NOT updated. Current response: &quot; + response);
-}</stringProp>
-            <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="script"></stringProp>
-          </BeanShellPostProcessor>
-          <hashTree/>
         </hashTree>
         <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Think Time" enabled="true">
           <stringProp name="ConstantTimer.delay">1000</stringProp>
@@ -339,7 +285,7 @@ if (response.contains(&quot;Jmeter Test User&quot;)) {
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
-            <name>saveConfig</name>
+            <n>saveConfig</n>
             <value class="SampleSaveConfiguration">
               <time>true</time>
               <latency>true</latency>
@@ -376,7 +322,7 @@ if (response.contains(&quot;Jmeter Test User&quot;)) {
         <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
-            <name>saveConfig</name>
+            <n>saveConfig</n>
             <value class="SampleSaveConfiguration">
               <time>true</time>
               <latency>true</latency>

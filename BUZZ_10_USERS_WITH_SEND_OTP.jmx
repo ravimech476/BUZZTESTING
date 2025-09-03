@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ API - 10 Users WITH Send OTP (Modified from Working File)" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ API - 10 Users Complete Flow (With Send OTP)" enabled="true">
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
+      <!-- CSV Data Set for phone numbers only -->
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Mobile Numbers CSV Config">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
@@ -19,7 +20,8 @@
         <stringProp name="variableNames">phoneNumber,countryCode</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BUZZ API Complete Test (Single Thread Group - 10 Different Users)">
+      
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BUZZ API Complete Test - 10 Users with Send OTP">
         <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
         <longProp name="ThreadGroup.duration">0</longProp>
@@ -32,10 +34,22 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Authentication (Once Per Thread)"/>
+        <!-- Debug CSV Data Loading -->
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Debug CSV Data Loading" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="script">log.info("=== CSV DATA DEBUG ===")
+log.info("Thread: " + ctx.getThreadNum() + " - Phone: " + vars.get("phoneNumber"))
+log.info("Full Phone with Hardcoded +91: +91" + vars.get("phoneNumber"))</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Complete Authentication Flow (Once Per Thread)"/>
         <hashTree>
-          <!-- NEW: Send OTP Step -->
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send OTP" enabled="true">
+          <!-- STEP 1: Send OTP (RESTORED) -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1. Send OTP Request" enabled="true">
             <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -48,9 +62,9 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;phoneNumber&quot;: &quot;${phoneNumber}&quot;,&#xd;
-  &quot;countryCode&quot;: &quot;+91&quot;&#xd;
+                  <stringProp name="Argument.value">{
+  "phoneNumber": "${phoneNumber}",
+  "countryCode": "+91"
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -71,16 +85,31 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug Send OTP Response" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="script">log.info("=== SEND OTP RESPONSE DEBUG ===")
+log.info("Phone Number: " + vars.get("phoneNumber"))
+log.info("Country Code: HARDCODED +91")
+log.info("Full Number: +91" + vars.get("phoneNumber"))
+log.info("Response Code: " + prev.getResponseCode())
+log.info("Response Message: " + prev.getResponseMessage())
+log.info("Response Body: " + prev.getResponseDataAsString())</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">false</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
           </hashTree>
           
-          <!-- Wait 3 seconds -->
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait 3 seconds">
+          <!-- Wait for OTP processing -->
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait 3 seconds for OTP Processing">
             <stringProp name="ConstantTimer.delay">3000</stringProp>
           </ConstantTimer>
           <hashTree/>
           
-          <!-- EXISTING: Verify OTP Step -->
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verify OTP and Get JWT" enabled="true">
+          <!-- STEP 2: Verify OTP and Get JWT -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2. Verify OTP and Get JWT" enabled="true">
             <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -93,10 +122,10 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;phoneNumber&quot;: &quot;${phoneNumber}&quot;,&#xd;
-  &quot;countryCode&quot;: &quot;+91&quot;,&#xd;
-  &quot;otp&quot;: &quot;123456&quot;&#xd;
+                  <stringProp name="Argument.value">{
+  "phoneNumber": "${phoneNumber}",
+  "countryCode": "+91",
+  "otp": "123456"
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -117,23 +146,26 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract JWT Token" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">JWT_TOKEN</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;token&quot;:&quot;([^&quot;]+)&quot;</stringProp>
+              <stringProp name="RegexExtractor.regex">"token":"([^"]+)"</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">NO_TOKEN</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
               <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
             </RegexExtractor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug JWT Token" enabled="true">
+            
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug JWT Token Extraction" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="script">log.info(&quot;=== JWT TOKEN DEBUG ===&quot;)
-log.info(&quot;JWT Token extracted: &quot; + vars.get(&quot;JWT_TOKEN&quot;))
-log.info(&quot;Phone Number: &quot; + vars.get(&quot;phoneNumber&quot;))
-log.info(&quot;Thread Number: &quot; + vars.get(&quot;__threadNum&quot;))
-log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringProp>
+              <stringProp name="script">log.info("=== JWT TOKEN EXTRACTION DEBUG ===")
+log.info("JWT Token extracted: " + vars.get("JWT_TOKEN"))
+log.info("Phone Number: " + vars.get("phoneNumber"))
+log.info("Country Code: HARDCODED +91")
+log.info("Thread Number: " + ctx.getThreadNum())
+log.info("Verify OTP Response: " + prev.getResponseDataAsString())</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="cacheKey">false</stringProp>
@@ -141,7 +173,9 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
             <hashTree/>
           </hashTree>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Countries" enabled="true">
+        
+        <!-- API Testing with Authentication -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3. Get Countries" enabled="true">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/buzz-api/countries</stringProp>
@@ -168,7 +202,8 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Customer Profile" enabled="true">
+        
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="4. Get Customer Profile" enabled="true">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/buzz-api/customer/profile</stringProp>
@@ -195,7 +230,8 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Categories" enabled="true">
+        
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5. Get Categories" enabled="true">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/buzz-api/category</stringProp>
@@ -222,7 +258,8 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Customer Profile" enabled="true">
+        
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="6. Update Customer Profile" enabled="true">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -235,8 +272,8 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-                &quot;name&quot;: &quot;Jmeter Test User&quot;&#xd;
+                <stringProp name="Argument.value">{
+  "name": "Jmeter Test User"
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -261,34 +298,9 @@ log.info(&quot;OTP Response: &quot; + prev.getResponseDataAsString())</stringPro
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Debug Update Request Details" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="script">log.info(&quot;=== UPDATE PROFILE REQUEST DEBUG ===&quot;)
-log.info(&quot;Phone Number: &quot; + vars.get(&quot;phoneNumber&quot;))
-log.info(&quot;JWT Token: &quot; + vars.get(&quot;JWT_TOKEN&quot;))
-log.info(&quot;Request JSON: {\&quot;name\&quot;: \&quot;Jmeter Test User\&quot;}&quot;)
-log.info(&quot;Content-Type will be: application/json&quot;)
-log.info(&quot;Authorization header will be: Bearer &quot; + vars.get(&quot;JWT_TOKEN&quot;))</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">false</stringProp>
-          </JSR223PreProcessor>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug Update Response Details" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="script">log.info(&quot;=== UPDATE PROFILE RESPONSE DEBUG ===&quot;)
-log.info(&quot;Response Code: &quot; + prev.getResponseCode())
-log.info(&quot;Response Message: &quot; + prev.getResponseMessage())
-log.info(&quot;Full Response Body: &quot; + prev.getResponseDataAsString())
-log.info(&quot;Request Headers Sent: &quot; + prev.getRequestHeaders())
-log.info(&quot;Actual Request Body Sent: &quot; + prev.getSamplerData())</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">false</stringProp>
-          </JSR223PostProcessor>
-          <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Customer Profile (Verify Update)">
+        
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. Verify Profile Update">
           <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/buzz-api/customer/profile</stringProp>
@@ -314,15 +326,16 @@ log.info(&quot;Actual Request Body Sent: &quot; + prev.getSamplerData())</string
             </collectionProp>
           </HeaderManager>
           <hashTree/>
+          
           <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Verify Profile Update" enabled="true">
             <stringProp name="BeanShellPostProcessor.script">String response = prev.getResponseDataAsString();
-log.info(&quot;Profile after update: &quot; + response);
+log.info("Profile after update: " + response);
 
-// Check if name was updated to &quot;Jmeter Test User&quot;
-if (response.contains(&quot;Jmeter Test User&quot;)) {
-    log.info(&quot;SUCCESS: Profile name was updated to &apos;Jmeter Test User&apos;&quot;);
+// Check if name was updated to "Jmeter Test User"
+if (response.contains("Jmeter Test User")) {
+    log.info("SUCCESS: Profile name was updated to 'Jmeter Test User'");
 } else {
-    log.error(&quot;FAILED: Profile name was NOT updated. Current response: &quot; + response);
+    log.error("FAILED: Profile name was NOT updated. Current response: " + response);
 }</stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
             <stringProp name="parameters"></stringProp>
@@ -331,15 +344,19 @@ if (response.contains(&quot;Jmeter Test User&quot;)) {
           </BeanShellPostProcessor>
           <hashTree/>
         </hashTree>
+        
+        <!-- Think Time between requests -->
         <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Think Time" enabled="true">
           <stringProp name="ConstantTimer.delay">1000</stringProp>
           <stringProp name="RandomTimer.range">500</stringProp>
         </GaussianRandomTimer>
         <hashTree/>
+        
+        <!-- Results Collectors -->
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
-            <name>saveConfig</name>
+            <n>saveConfig</n>
             <value class="SampleSaveConfiguration">
               <time>true</time>
               <latency>true</latency>
@@ -373,10 +390,11 @@ if (response.contains(&quot;Jmeter Test User&quot;)) {
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
+        
         <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
-            <name>saveConfig</name>
+            <n>saveConfig</n>
             <value class="SampleSaveConfiguration">
               <time>true</time>
               <latency>true</latency>
