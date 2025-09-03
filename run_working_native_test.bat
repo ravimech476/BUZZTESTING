@@ -57,7 +57,8 @@ echo   📋 Using corrected native WebSocket samplers
 echo.
 
 jmeter -n -t BUZZ_WEBSOCKET_WORKING.jmx ^
-    -l results\working_native_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%.jtl
+    -l results\working_native_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%.jtl ^
+    -e -o results\html_report_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
 
 echo.
 echo ✅ WORKING NATIVE WEBSOCKET TEST COMPLETED!
