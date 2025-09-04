@@ -18,21 +18,24 @@ echo    [5] Native WebSocket Test (Plugin - 20 connections)
 echo    [6] WebSocket Stress Test (100 connections)
 echo    [7] Persistent WebSocket Test (NO DISCONNECT - 5 min)
 echo    [8] Realistic WebSocket Test (PROPER USER INTERACTIONS)
-echo    [9] Monitor WebSocket Server Status
+echo    [9] CALL STORM STRESS TEST (120 users - HIGH LOAD)
+echo    [10] OPTIMIZED Call Storm (120 users - FIXED TIMEOUTS)
+echo    [11] Monitor WebSocket Server Status
 echo.
 echo 🔄 COMBINED TESTING:
-echo    [10] Full-Stack Test (API + WebSocket)
-echo    [11] Production Simulation Test
+echo    [12] Full-Stack Test (API + WebSocket)
+echo    [13] Production Simulation Test
 echo.
 echo 🛠️  UTILITIES:
-echo    [12] Install WebSocket Plugins
-echo    [13] Check WebSocket Dependencies
-echo    [14] View Test Results
-echo    [15] Clean Results Directory
+echo    [14] Install WebSocket Plugins
+echo    [15] Check WebSocket Dependencies
+echo    [16] Launch JMeter GUI (Visual Interface)
+echo    [17] View Test Results
+echo    [18] Clean Results Directory
 echo.
 echo    [0] Exit
 echo.
-set /p choice="Select testing option [0-15]: "
+set /p choice="Select testing option [0-18]: "
 
 if "%choice%"=="1" goto :api_standard
 if "%choice%"=="2" goto :api_no_otp
@@ -42,13 +45,16 @@ if "%choice%"=="5" goto :websocket_native
 if "%choice%"=="6" goto :websocket_stress
 if "%choice%"=="7" goto :websocket_persistent
 if "%choice%"=="8" goto :websocket_realistic
-if "%choice%"=="9" goto :websocket_monitor
-if "%choice%"=="10" goto :fullstack_test
-if "%choice%"=="11" goto :production_sim
-if "%choice%"=="12" goto :install_plugins
-if "%choice%"=="13" goto :check_deps
-if "%choice%"=="14" goto :view_results
-if "%choice%"=="15" goto :clean_results
+if "%choice%"=="9" goto :call_storm_stress
+if "%choice%"=="10" goto :optimized_storm
+if "%choice%"=="11" goto :websocket_monitor
+if "%choice%"=="12" goto :fullstack_test
+if "%choice%"=="13" goto :production_sim
+if "%choice%"=="14" goto :install_plugins
+if "%choice%"=="15" goto :check_deps
+if "%choice%"=="16" goto :launch_gui
+if "%choice%"=="17" goto :view_results
+if "%choice%"=="18" goto :clean_results
 if "%choice%"=="0" goto :exit
 goto :invalid_choice
 
@@ -142,6 +148,43 @@ pause
 call run_realistic_websocket_test.bat
 goto :menu_end
 
+:call_storm_stress
+echo.
+echo BUZZ CALL STORM STRESS TEST - HIGH LOAD WARNING!
+echo    DANGER: This test creates SIGNIFICANT server load
+echo    - 120 concurrent WebSocket connections
+echo    - ~10 calls per second for 60 seconds
+echo    - 24 Heavy Callers (aggressive calling pattern)
+echo    - 72 Regular Callers (normal calling pattern) 
+echo    - 24 Call Receivers (realistic response patterns)
+echo    - Total: ~528 calls during storm period
+echo.
+echo    This test will stress your BUZZ server to find limits
+echo    Monitor server resources and performance during execution
+echo.
+set /p confirm_storm="Continue with HIGH LOAD stress test? [Y/N]: "
+if /I "%confirm_storm%" NEQ "Y" goto :menu_start
+call run_call_storm_stress_test.bat
+goto :menu_end
+
+:optimized_storm
+echo.
+echo BUZZ OPTIMIZED CALL STORM - TIMEOUT FIXES APPLIED!
+echo    SUCCESS: Fixed receiver timeout issues from previous test
+echo    - Receiver timeouts: 6s reduced to 2s (3x faster cycles)
+echo    - Response times: 2-6s reduced to 0.5-2s (4x faster)
+echo    - Smart targeting: 60-70%% calls target active receivers
+echo    - Better timing: Receivers start first, callers follow
+echo    - Expected improvement: 84%% to 90%+ success rate
+echo.
+echo    This optimized version should eliminate most timeout errors
+echo    while maintaining the same 120-user stress load
+echo.
+set /p confirm_optimized="Run OPTIMIZED stress test with timeout fixes? [Y/N]: "
+if /I "%confirm_optimized%" NEQ "Y" goto :menu_start
+call run_optimized_storm_test.bat
+goto :menu_end
+
 :websocket_monitor
 echo.
 echo 📡 Starting WebSocket Server Monitoring...
@@ -189,6 +232,18 @@ call check_websocket_dependencies.bat
 pause
 goto :menu_start
 
+:launch_gui
+echo.
+echo Launching JMeter GUI Interface...
+echo    - Visual test plan editor
+echo    - Real-time execution monitoring  
+echo    - Interactive result viewing
+echo    - Test plan modification capabilities
+echo.
+call launch_jmeter_gui.bat
+pause
+goto :menu_start
+
 :view_results
 echo.
 echo 📊 AVAILABLE TEST RESULTS:
@@ -229,7 +284,7 @@ goto :menu_start
 
 :invalid_choice
 echo.
-echo ❌ Invalid choice. Please select a number between 0-15.
+echo ❌ Invalid choice. Please select a number between 0-18.
 pause
 goto :menu_start
 

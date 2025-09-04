@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ Call Storm FIXED - Corrected Targeting" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.comments">FIXED timeout version with correct user ID targeting 384-503</stringProp>
+      <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      
+      <!-- CSV Data Configuration -->
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">stress_test_users_120.csv</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">userId,userName,phoneNumber,countryCode,targetUserId</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+
+      <!-- CALL RECEIVERS - Start FIRST with short timeouts -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="FIXED Call Receivers (24 users)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">-1</stringProp>
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">24</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <longProp name="ThreadGroup.duration">75</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- Initial Connection Setup -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Receiver Setup" enabled="true"/>
+        <hashTree>
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="Receiver - Connect" enabled="true">
+            <stringProp name="server">buzz.pazl.info</stringProp>
+            <stringProp name="port">5000</stringProp>
+            <stringProp name="path">/</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="connectTimeout">10000</stringProp>
+            <boolProp name="streamingConnection">false</boolProp>
+          </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+          <hashTree/>
+          
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait" enabled="true">
+            <stringProp name="ConstantTimer.delay">500</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Receiver - Register" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"register","userId":"${userId}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- OPTIMIZED Receiver Activities -->
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="FIXED Receive Pattern" enabled="true"/>
+        <hashTree>
+          
+          <!-- FIXED: Short timeout for faster cycles -->
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="FIXED - Listen for Calls (2s timeout)" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <stringProp name="responsePattern">incoming_call|call|ping|pong</stringProp>
+            <boolProp name="binaryData">false</boolProp>
+          </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+          <hashTree/>
+          
+          <!-- If incoming call detected -->
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Call Received (FAST Response)" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(prev.getResponseDataAsString().contains("incoming_call") || prev.getResponseDataAsString().contains("\"type\":\"call\""))}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            
+            <!-- Extract caller info -->
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Process Call QUICKLY" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="script">
+def response = prev.getResponseDataAsString()
+def receiverId = vars.get("userId")
+log.info("🟢 RECEIVER ${receiverId} got call: ${response}")
+
+// Extract caller ID quickly
+try {
+    def callerId = "unknown"
+    if (response.contains("userId")) {
+        def match = response =~ /"userId":"?(\d+)"?/
+        if (match) {
+            callerId = match[0][1]
+        }
+    }
+    vars.put("callerId", callerId.toString())
+    log.info("📞 FAST processing call from: ${callerId}")
+} catch (Exception e) {
+    vars.put("callerId", "unknown")
+}
+              </stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+            
+            <!-- FASTER response time (1-2 seconds instead of 2-6) -->
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="FAST Response Time" enabled="true">
+              <stringProp name="ConstantTimer.delay">500</stringProp>
+              <stringProp name="RandomTimer.range">1500</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            
+            <!-- Quick Accept/Reject Decision (80% accept, 20% reject, 0% timeout) -->
+            <RandomController guiclass="RandomControllerGui" testclass="RandomController" testname="FAST Call Decision" enabled="true"/>
+            <hashTree>
+              
+              <!-- Accept Call (80% probability - increased) -->
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Accept Call (80%)" enabled="true"/>
+              <hashTree>
+                <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Accept Rate 80%" enabled="true">
+                  <intProp name="ThroughputController.style">1</intProp>
+                  <boolProp name="ThroughputController.perThread">false</boolProp>
+                  <intProp name="ThroughputController.maxThroughput">1</intProp>
+                  <FloatProperty>
+                    <n>ThroughputController.percentThroughput</n>
+                    <value>80.0</value>
+                  </FloatProperty>
+                </ThroughputController>
+                <hashTree>
+                  <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="FAST - Accept Call" enabled="true">
+                    <boolProp name="createNewConnection">false</boolProp>
+                    <stringProp name="dataType">Text</stringProp>
+                    <stringProp name="requestData">{"type":"accept","userId":"${userId}","callerId":"${callerId}","id":"${userId}"}</stringProp>
+                  </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              
+              <!-- Reject Call (20% probability) -->
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Reject Call (20%)" enabled="true"/>
+              <hashTree>
+                <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Reject Rate 20%" enabled="true">
+                  <intProp name="ThroughputController.style">1</intProp>
+                  <boolProp name="ThroughputController.perThread">false</boolProp>
+                  <intProp name="ThroughputController.maxThroughput">1</intProp>
+                  <FloatProperty>
+                    <n>ThroughputController.percentThroughput</n>
+                    <value>20.0</value>
+                  </FloatProperty>
+                </ThroughputController>
+                <hashTree>
+                  <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="FAST - Reject Call" enabled="true">
+                    <boolProp name="createNewConnection">false</boolProp>
+                    <stringProp name="dataType">Text</stringProp>
+                    <stringProp name="requestData">{"type":"reject","userId":"${userId}","callerId":"${callerId}","id":"${userId}"}</stringProp>
+                  </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              
+            </hashTree>
+          </hashTree>
+          
+          <!-- Very brief pause before next listen cycle -->
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Quick Listen Cycle" enabled="true">
+            <stringProp name="ConstantTimer.delay">500</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          
+        </hashTree>
+      </hashTree>
+      
+      <!-- HEAVY CALLERS - Start after receivers are ready -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Heavy Callers (24 users)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">8</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">24</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">8</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <longProp name="ThreadGroup.delay">10</longProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- Initial Connection Setup -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Heavy Caller Setup" enabled="true"/>
+        <hashTree>
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="Heavy Caller - Connect" enabled="true">
+            <stringProp name="server">buzz.pazl.info</stringProp>
+            <stringProp name="port">5000</stringProp>
+            <stringProp name="path">/</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="connectTimeout">10000</stringProp>
+            <boolProp name="streamingConnection">false</boolProp>
+          </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+          <hashTree/>
+          
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait" enabled="true">
+            <stringProp name="ConstantTimer.delay">500</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Heavy Caller - Register" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"register","userId":"${userId}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Heavy Caller Activities -->
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Heavy Call Pattern" enabled="true"/>
+        <hashTree>
+          
+          <!-- FIXED: Target receivers with CORRECT user IDs -->
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Target Receivers (FIXED IDs)" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+def currentUserId = Integer.parseInt(vars.get("userId"))
+
+// FIXED: Correct receiver target range - last 24 users from CSV (480-503)
+def receiverTargets = [480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503]
+
+// 70% chance to target a receiver, 30% random
+def random = new Random()
+def targetReceiver = random.nextDouble() < 0.7
+
+def selectedTarget
+if (targetReceiver) {
+    selectedTarget = receiverTargets[random.nextInt(receiverTargets.size())]
+} else {
+    // Random target from full range (excluding self)
+    do {
+        selectedTarget = 384 + random.nextInt(120) // 384-503 range
+    } while (selectedTarget == currentUserId)
+}
+
+vars.put("fixedTarget", selectedTarget.toString())
+log.info("Heavy Caller ${currentUserId} targeting: ${selectedTarget} (receiver-focused: ${targetReceiver})")
+            </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          
+          <!-- Faster calling interval -->
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Heavy Call Interval" enabled="true">
+            <stringProp name="ConstantTimer.delay">1500</stringProp>
+            <stringProp name="RandomTimer.range">2500</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="HEAVY CALLER - Fixed Target Call" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"call","userId":"${userId}","targetId":"${fixedTarget}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+          
+          <!-- FIXED: Shorter timeout for caller responses -->
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Heavy Caller - Read Response (2s)" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <stringProp name="responsePattern">call_accepted|call_rejected|call_ended|Target not available|ping|pong</stringProp>
+            <boolProp name="binaryData">false</boolProp>
+          </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+          <hashTree/>
+          
+        </hashTree>
+      </hashTree>
+      
+      <!-- REGULAR CALLERS - Start after receivers are ready -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Regular Callers (72 users)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">3</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">72</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">12</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <longProp name="ThreadGroup.delay">15</longProp>
+        <longProp name="ThreadGroup.duration">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        
+        <!-- Initial Connection Setup -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Regular Caller Setup" enabled="true"/>
+        <hashTree>
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="Regular Caller - Connect" enabled="true">
+            <stringProp name="server">buzz.pazl.info</stringProp>
+            <stringProp name="port">5000</stringProp>
+            <stringProp name="path">/</stringProp>
+            <stringProp name="protocol">ws</stringProp>
+            <stringProp name="connectTimeout">10000</stringProp>
+            <boolProp name="streamingConnection">false</boolProp>
+          </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+          <hashTree/>
+          
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait" enabled="true">
+            <stringProp name="ConstantTimer.delay">500</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="Regular Caller - Register" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"register","userId":"${userId}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        
+        <!-- Regular Caller Activities -->
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Regular Call Pattern" enabled="true"/>
+        <hashTree>
+          
+          <!-- FIXED: Target receivers with CORRECT user IDs -->
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Target Receivers (FIXED IDs)" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+def currentUserId = Integer.parseInt(vars.get("userId"))
+
+// FIXED: Correct receiver target range - last 24 users from CSV (480-503)
+def receiverTargets = [480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503]
+
+// 60% chance to target a receiver, 40% random
+def random = new Random()
+def targetReceiver = random.nextDouble() < 0.6
+
+def selectedTarget
+if (targetReceiver) {
+    selectedTarget = receiverTargets[random.nextInt(receiverTargets.size())]
+} else {
+    // Random target from full range (excluding self)
+    do {
+        selectedTarget = 384 + random.nextInt(120)
+    } while (selectedTarget == currentUserId)
+}
+
+vars.put("fixedTarget", selectedTarget.toString())
+log.info("Regular Caller ${currentUserId} targeting: ${selectedTarget} (receiver-focused: ${targetReceiver})")
+            </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          
+          <!-- Regular calling interval -->
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Regular Call Interval" enabled="true">
+            <stringProp name="ConstantTimer.delay">4000</stringProp>
+            <stringProp name="RandomTimer.range">4000</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="REGULAR CALLER - Fixed Target Call" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="requestData">{"type":"call","userId":"${userId}","targetId":"${fixedTarget}"}</stringProp>
+          </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+          <hashTree/>
+          
+          <!-- FIXED: Shorter timeout for caller responses -->
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Regular Caller - Read Response (2s)" enabled="true">
+            <boolProp name="createNewConnection">false</boolProp>
+            <stringProp name="dataType">Text</stringProp>
+            <stringProp name="responseTimeout">2000</stringProp>
+            <stringProp name="responsePattern">call_accepted|call_rejected|call_ended|Target not available|ping|pong</stringProp>
+            <boolProp name="binaryData">false</boolProp>
+          </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+          <hashTree/>
+          
+        </hashTree>
+      </hashTree>
+      
+      <!-- Simple Listeners -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
