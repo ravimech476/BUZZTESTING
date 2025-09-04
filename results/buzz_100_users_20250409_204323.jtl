@@ -1,0 +1,6 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756998809764,510,1. Send OTP,200,OK,BUZZ 100 Users Complete Workflow 1-1,text,true,,363,270,8,8,https://buzz.pazl.info/buzz-api/send-otp,510,0,450
+1756998810207,119,1. Send OTP,200,OK,BUZZ 100 Users Complete Workflow 1-2,text,true,,363,270,8,8,https://buzz.pazl.info/buzz-api/send-otp,119,0,74
+1756998810801,122,1. Send OTP,200,OK,BUZZ 100 Users Complete Workflow 1-3,text,true,,363,270,9,9,https://buzz.pazl.info/buzz-api/send-otp,122,0,74
+1756998811404,104,1. Send OTP,200,OK,BUZZ 100 Users Complete Workflow 1-4,text,true,,363,270,10,10,https://buzz.pazl.info/buzz-api/send-otp,104,0,67
+1756998811999,139,1. Send OTP,200,OK,BUZZ 100 Users Complete Workflow 1-5,text,true,,363,270,11,11,https://buzz.pazl.info/buzz-api/send-otp,139,0,90

@@ -1,0 +1,72 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1756995236804,228,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-1,,true,,129,158,4,9,null,0,0,228
+1756995236804,228,01 - Connect,101,Switching Protocols,Callers (60 users) 1-1,,true,,129,158,5,9,null,0,0,228
+1756995236987,53,01 - Connect,101,Switching Protocols,Callers (60 users) 1-2,,true,,129,158,5,9,null,0,0,53
+1756995237065,57,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-2,,true,,129,158,5,10,null,0,0,57
+1756995237320,53,01 - Connect,101,Switching Protocols,Callers (60 users) 1-3,,true,,129,158,6,11,null,0,0,53
+1756995237396,55,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-3,,true,,129,158,6,12,null,0,0,55
+1756995237650,60,01 - Connect,101,Switching Protocols,Callers (60 users) 1-4,,true,,129,158,7,13,null,0,0,60
+1756995237731,66,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-4,,true,,129,158,7,14,null,0,0,66
+1756995237983,54,01 - Connect,101,Switching Protocols,Callers (60 users) 1-5,,true,,129,158,8,15,null,0,0,54
+1756995238041,1,02 - Register,200,OK,Callers (60 users) 1-2,,true,,0,40,8,15,null,0,0,0
+1756995238041,1,02 - Register,200,OK,Callers (60 users) 1-1,,true,,0,40,8,15,null,0,0,0
+1756995238041,1,02 - Register,200,OK,Receivers (60 users) 2-1,,true,,0,40,7,15,null,0,0,0
+1756995238122,0,02 - Register,200,OK,Receivers (60 users) 2-2,,true,,0,40,8,16,null,0,0,0
+1756995238059,132,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-5,,true,,129,158,8,16,null,0,0,132
+1756995238316,56,01 - Connect,101,Switching Protocols,Callers (60 users) 1-6,,true,,129,158,9,17,null,0,0,56
+1756995238374,1,02 - Register,200,OK,Callers (60 users) 1-3,,true,,0,40,9,17,null,0,0,0
+1756995238392,56,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-6,,true,,129,158,9,18,null,0,0,56
+1756995238452,0,02 - Register,200,OK,Receivers (60 users) 2-3,,true,,0,40,9,18,null,0,0,0
+1756995238643,56,01 - Connect,101,Switching Protocols,Callers (60 users) 1-7,,true,,129,158,10,19,null,0,0,56
+1756995238711,0,02 - Register,200,OK,Callers (60 users) 1-4,,true,,0,40,10,19,null,0,0,0
+1756995238726,57,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-7,,true,,129,158,10,20,null,0,0,57
+1756995238798,0,02 - Register,200,OK,Receivers (60 users) 2-4,,true,,0,40,10,20,null,0,0,0
+1756995239038,0,02 - Register,200,OK,Callers (60 users) 1-5,,true,,0,40,11,21,null,0,0,0
+1756995238983,60,01 - Connect,101,Switching Protocols,Callers (60 users) 1-8,,true,,129,158,11,21,null,0,0,60
+1756995239063,59,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-8,,true,,129,158,11,22,null,0,0,59
+1756995239191,1,02 - Register,200,OK,Receivers (60 users) 2-5,,true,,0,40,11,22,null,0,0,0
+1756995239373,1,02 - Register,200,OK,Callers (60 users) 1-6,,true,,0,40,12,23,null,0,0,0
+1756995239305,74,01 - Connect,101,Switching Protocols,Callers (60 users) 1-9,,true,,129,158,12,23,null,0,0,74
+1756995239449,1,02 - Register,200,OK,Receivers (60 users) 2-6,,true,,0,40,12,24,null,0,0,0
+1756995239399,59,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-9,,true,,129,158,12,24,null,0,0,59
+1756995239636,53,01 - Connect,101,Switching Protocols,Callers (60 users) 1-10,,true,,129,158,13,25,null,0,0,53
+1756995239700,1,02 - Register,200,OK,Callers (60 users) 1-7,,true,,0,40,13,25,null,0,0,0
+1756995239192,29,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-5,text,true,,162,0,11,22,null,0,0,0
+1756995238123,71,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-2,text,true,,162,0,8,16,null,0,0,0
+1756995238043,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-1,text,true,,162,0,8,16,null,0,0,0
+1756995238453,26,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-3,text,true,,162,0,9,18,null,0,0,0
+1756995239450,27,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-6,text,true,,162,0,12,24,null,0,0,0
+1756995238800,29,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-4,text,true,,162,0,10,20,null,0,0,0
+1756995239785,0,02 - Register,200,OK,Receivers (60 users) 2-7,,true,,0,40,13,26,null,0,0,0
+1756995239733,57,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-10,,true,,129,158,13,26,null,0,0,57
+1756995239785,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-7,text,true,,162,0,13,26,null,0,0,0
+1756995239965,59,01 - Connect,101,Switching Protocols,Callers (60 users) 1-11,,true,,129,158,14,27,null,0,0,59
+1756995240044,0,02 - Register,200,OK,Callers (60 users) 1-8,,true,,0,40,14,27,null,0,0,0
+1756995240063,52,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-11,,true,,129,158,14,28,null,0,0,52
+1756995240124,0,02 - Register,200,OK,Receivers (60 users) 2-8,,true,,0,40,14,28,null,0,0,0
+1756995240124,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-8,text,true,,162,0,14,28,null,0,0,0
+1756995240299,56,01 - Connect,101,Switching Protocols,Callers (60 users) 1-12,,true,,129,158,15,29,null,0,0,56
+1756995240382,0,02 - Register,200,OK,Callers (60 users) 1-9,,true,,0,40,15,29,null,0,0,0
+1756995240395,54,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-12,,true,,129,158,15,30,null,0,0,54
+1756995240460,1,02 - Register,200,OK,Receivers (60 users) 2-9,,true,,0,40,15,30,null,0,0,0
+1756995240461,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-9,text,true,,162,0,15,30,null,0,0,0
+1756995240369,179,Select Receiver Target,200,OK,Callers (60 users) 1-1,text,true,,0,0,15,30,null,0,0,0
+1756995240534,26,Select Receiver Target,200,OK,Callers (60 users) 1-3,text,true,,0,0,15,30,null,0,0,0
+1756995240619,62,01 - Connect,101,Switching Protocols,Callers (60 users) 1-13,,true,,129,158,16,31,null,0,0,62
+1756995240691,1,02 - Register,200,OK,Callers (60 users) 1-10,,true,,0,40,16,31,null,0,0,0
+1756995240726,55,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-13,,true,,129,158,16,32,null,0,0,55
+1756995240791,1,02 - Register,200,OK,Receivers (60 users) 2-10,,true,,0,40,16,32,null,0,0,0
+1756995240792,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-10,text,true,,162,0,16,32,null,0,0,0
+1756995240951,57,01 - Connect,101,Switching Protocols,Callers (60 users) 1-14,,true,,129,158,17,33,null,0,0,57
+1756995241030,0,02 - Register,200,OK,Callers (60 users) 1-11,,true,,0,40,17,33,null,0,0,0
+1756995241116,0,02 - Register,200,OK,Receivers (60 users) 2-11,,true,,0,40,17,34,null,0,0,0
+1756995241061,59,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-14,,true,,129,158,17,34,null,0,0,59
+1756995241116,28,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-11,text,true,,162,0,17,34,null,0,0,0
+1756995241223,18,Select Receiver Target,200,OK,Callers (60 users) 1-4,text,true,,0,0,17,34,null,0,0,0
+1756995241275,56,01 - Connect,101,Switching Protocols,Callers (60 users) 1-15,,true,,129,158,18,35,null,0,0,56
+1756995241356,0,02 - Register,200,OK,Callers (60 users) 1-12,,true,,0,40,18,35,null,0,0,0
+1756995241392,57,01 - Connect,101,Switching Protocols,Receivers (60 users) 2-15,,true,,129,158,18,36,null,0,0,57
+1756995241451,1,02 - Register,200,OK,Receivers (60 users) 2-12,,true,,0,40,18,36,null,0,0,0
+1756995241452,30,04 - Call Received,200,WebSocket heartbeat - connection alive,Receivers (60 users) 2-12,text,true,,162,0,18,36,null,0,0,0
+1756995241609,57,01 - Connect,101,Switching Protocols,Callers (60 users) 1-16,,true,,129,158,19,37,null,0,0,57
+1756995241682,0,02 - Register,200,OK,Callers (60 users) 1-13,,true,,0,40,19,37,null,0,0,0
