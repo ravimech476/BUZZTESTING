@@ -82,7 +82,7 @@ echo STARTING BUZZ CALL INITIATION STORM STRESS TEST...
 echo   Preparing 120 users for call storm simulation
 echo.
 
-jmeter -n -t BUZZ_CALL_STORM_STRESS_TEST.jmx ^
+jmeter -n -t BUZZ_OPTIMIZED_PING_HANDLED_FINAL.jmx ^
     -l results\call_storm_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%.jtl ^
     -e -o results\call_storm_report_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
 

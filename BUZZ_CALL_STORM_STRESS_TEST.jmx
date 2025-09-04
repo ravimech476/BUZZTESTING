@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ Balanced Test - 60 Callers + 60 Receivers" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BUZZ Balanced Test - 60 Callers + 60 Receivers - OPTIMIZED" enabled="true">
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
-      <stringProp name="TestPlan.comments">Balanced BUZZ test: 60 callers and 60 receivers for optimal load distribution</stringProp>
+      <stringProp name="TestPlan.comments">OPTIMIZED: Ultra-fast response + WebSocket keep-alive + ping frame handling</stringProp>
       <elementProp name="TestPlan.arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
     </TestPlan>
     <hashTree>
-      <!-- CSV Data Set for 120 users -->
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="filename">stress_test_users_120.csv</stringProp>
@@ -24,8 +23,6 @@
         <stringProp name="variableNames">userId,userName,phoneNumber,countryCode,targetUserId</stringProp>
       </CSVDataSet>
       <hashTree/>
-      
-      <!-- CALLERS THREAD GROUP - 60 users (First 60 users: 384-443) -->
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Callers (60 users)" enabled="true">
         <intProp name="ThreadGroup.num_threads">60</intProp>
         <intProp name="ThreadGroup.ramp_time">20</intProp>
@@ -39,27 +36,27 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <!-- SETUP PHASE -->
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Caller Setup" enabled="true"/>
         <hashTree>
-          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="01 - Connect">
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="01 - Connect" enabled="true">
             <stringProp name="server">buzz.pazl.info</stringProp>
             <stringProp name="port">5000</stringProp>
             <stringProp name="path">/</stringProp>
             <stringProp name="protocol">ws</stringProp>
             <stringProp name="connectTimeout">10000</stringProp>
-            <boolProp name="streamingConnection">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
             <boolProp name="TLS">false</boolProp>
             <stringProp name="readTimeout">6000</stringProp>
+            <boolProp name="ignorePingPong">false</boolProp>
+            <stringProp name="pingPongInterval">30000</stringProp>
+            <boolProp name="sendPingFrame">true</boolProp>
           </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
           <hashTree/>
-          
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait">
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait" enabled="true">
             <stringProp name="ConstantTimer.delay">1000</stringProp>
           </ConstantTimer>
           <hashTree/>
-          
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="02 - Register">
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="02 - Register" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="dataType">Text</stringProp>
             <stringProp name="requestData">{&quot;type&quot;:&quot;register&quot;,&quot;userId&quot;:&quot;${userId}&quot;}</stringProp>
@@ -74,9 +71,7 @@
           </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree/>
         </hashTree>
-        
-        <!-- CALL PATTERN -->
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Caller Pattern"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Caller Pattern" enabled="true"/>
         <hashTree>
           <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Select Receiver Target" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
@@ -87,16 +82,17 @@ def maxReceiverId = 503
 def randomReceiver = minReceiverId + new Random().nextInt(maxReceiverId - minReceiverId + 1)
 vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
             </stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">false</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Call Interval">
-            <stringProp name="ConstantTimer.delay">4000</stringProp>
-            <stringProp name="RandomTimer.range">4000</stringProp>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Call Interval" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+            <stringProp name="RandomTimer.range">2000</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="03 - Call Initiated">
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="03 - Call Initiated" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="dataType">Text</stringProp>
             <stringProp name="requestData">{&quot;type&quot;:&quot;call&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${targetReceiver}&quot;}</stringProp>
@@ -110,8 +106,7 @@ vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
             <stringProp name="dataFile"></stringProp>
           </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree/>
-          
-          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Caller - Read Response">
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Caller - Read Response" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="dataType">Text</stringProp>
             <stringProp name="responseTimeout">3000</stringProp>
@@ -124,13 +119,12 @@ vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
             <stringProp name="connectTimeout">20000</stringProp>
             <stringProp name="readTimeout">6000</stringProp>
             <boolProp name="optional">true</boolProp>
+            <boolProp name="ignorePingPong">true</boolProp>
           </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
           <hashTree/>
         </hashTree>
       </hashTree>
-      
-      <!-- RECEIVERS THREAD GROUP - 60 users (Last 60 users: 444-503) -->
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Receivers (60 users)">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Receivers (60 users)" enabled="true">
         <intProp name="ThreadGroup.num_threads">60</intProp>
         <intProp name="ThreadGroup.ramp_time">20</intProp>
         <longProp name="ThreadGroup.duration">120</longProp>
@@ -144,27 +138,27 @@ vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <!-- SETUP PHASE -->
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Receiver Setup" enabled="true"/>
         <hashTree>
-          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="01 - Connect">
+          <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="01 - Connect" enabled="true">
             <stringProp name="server">buzz.pazl.info</stringProp>
             <stringProp name="port">5000</stringProp>
             <stringProp name="path">/</stringProp>
             <stringProp name="protocol">ws</stringProp>
             <stringProp name="connectTimeout">10000</stringProp>
-            <boolProp name="streamingConnection">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
             <boolProp name="TLS">false</boolProp>
             <stringProp name="readTimeout">6000</stringProp>
+            <boolProp name="ignorePingPong">false</boolProp>
+            <stringProp name="pingPongInterval">30000</stringProp>
+            <boolProp name="sendPingFrame">true</boolProp>
           </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
           <hashTree/>
-          
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait">
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Connect Wait" enabled="true">
             <stringProp name="ConstantTimer.delay">1000</stringProp>
           </ConstantTimer>
           <hashTree/>
-          
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="02 - Register">
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="02 - Register" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="dataType">Text</stringProp>
             <stringProp name="requestData">{&quot;type&quot;:&quot;register&quot;,&quot;userId&quot;:&quot;${userId}&quot;}</stringProp>
@@ -179,11 +173,9 @@ vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
           </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree/>
         </hashTree>
-        
-        <!-- RECEIVE AND RESPOND PATTERN -->
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Receive and Respond Pattern"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Receive and Respond Pattern" enabled="true"/>
         <hashTree>
-          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="04 - Call Received">
+          <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="04 - Call Received" enabled="true">
             <boolProp name="createNewConnection">false</boolProp>
             <stringProp name="dataType">Text</stringProp>
             <stringProp name="responseTimeout">5000</stringProp>
@@ -196,16 +188,16 @@ vars.put(&quot;targetReceiver&quot;, randomReceiver.toString())
             <stringProp name="connectTimeout">20000</stringProp>
             <stringProp name="readTimeout">6000</stringProp>
             <boolProp name="optional">true</boolProp>
+            <boolProp name="ignorePingPong">true</boolProp>
           </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
           <hashTree/>
-          
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Call Received">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Call Received" enabled="true">
             <stringProp name="IfController.condition">${__groovy(prev.getResponseDataAsString().contains(&quot;incoming_call&quot;) || prev.getResponseDataAsString().contains(&quot;call&quot;))}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Process Call Decision">
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Process Call Decision" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="script">
 def response = prev.getResponseDataAsString()
@@ -237,28 +229,29 @@ if (random &lt; 70) {
     vars.put(&quot;respondToCall&quot;, &quot;false&quot;)
 }
               </stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">false</stringProp>
             </JSR223Sampler>
             <hashTree/>
-            
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Human Response Time">
-              <stringProp name="ConstantTimer.delay">2000</stringProp>
-              <stringProp name="RandomTimer.range">4000</stringProp>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Human Response Time" enabled="true">
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+              <stringProp name="RandomTimer.range">200</stringProp>
             </UniformRandomTimer>
             <hashTree/>
-            
-            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Responding (Not Timeout)">
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Responding (Not Timeout)" enabled="true">
               <stringProp name="IfController.condition">${__groovy(vars.get(&quot;respondToCall&quot;) == &quot;true&quot;)}</stringProp>
               <boolProp name="IfController.evaluateAll">false</boolProp>
               <boolProp name="IfController.useExpression">true</boolProp>
             </IfController>
             <hashTree>
-              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Accept Call">
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Accept Call" enabled="true">
                 <stringProp name="IfController.condition">${__groovy(vars.get(&quot;responseType&quot;) == &quot;accept&quot;)}</stringProp>
                 <boolProp name="IfController.evaluateAll">false</boolProp>
                 <boolProp name="IfController.useExpression">true</boolProp>
               </IfController>
               <hashTree>
-                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="05 - Call Accepted">
+                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="05 - Call Accepted" enabled="true">
                   <boolProp name="createNewConnection">false</boolProp>
                   <stringProp name="dataType">Text</stringProp>
                   <stringProp name="requestData">{&quot;type&quot;:&quot;accept&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${callerId}&quot;,&quot;id&quot;:&quot;${userId}&quot;}</stringProp>
@@ -272,14 +265,12 @@ if (random &lt; 70) {
                   <stringProp name="dataFile"></stringProp>
                 </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
                 <hashTree/>
-                
-                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Call Duration">
+                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Call Duration" enabled="true">
                   <stringProp name="ConstantTimer.delay">5000</stringProp>
                   <stringProp name="RandomTimer.range">10000</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
-                
-                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="07 - Call Ended">
+                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="07 - Call Ended" enabled="true">
                   <boolProp name="createNewConnection">false</boolProp>
                   <stringProp name="dataType">Text</stringProp>
                   <stringProp name="requestData">{&quot;type&quot;:&quot;end_call&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${callerId}&quot;}</stringProp>
@@ -294,14 +285,13 @@ if (random &lt; 70) {
                 </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
                 <hashTree/>
               </hashTree>
-              
-              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Reject Call">
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Reject Call" enabled="true">
                 <stringProp name="IfController.condition">${__groovy(vars.get(&quot;responseType&quot;) == &quot;reject&quot;)}</stringProp>
                 <boolProp name="IfController.evaluateAll">false</boolProp>
                 <boolProp name="IfController.useExpression">true</boolProp>
               </IfController>
               <hashTree>
-                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="06 - Call Rejected">
+                <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="06 - Call Rejected" enabled="true">
                   <boolProp name="createNewConnection">false</boolProp>
                   <stringProp name="dataType">Text</stringProp>
                   <stringProp name="requestData">{&quot;type&quot;:&quot;reject&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${callerId}&quot;,&quot;id&quot;:&quot;${userId}&quot;}</stringProp>
