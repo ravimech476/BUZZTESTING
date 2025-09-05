@@ -1,649 +1,777 @@
-2025-09-05 13:00:32,843 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2025-09-05 13:00:32,873 INFO o.a.j.JMeter: Loading user properties from: C:\Program Files\apache-jmeter-5.6.3\bin\user.properties
-2025-09-05 13:00:32,875 INFO o.a.j.JMeter: Loading system properties from: C:\Program Files\apache-jmeter-5.6.3\bin\system.properties
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: Version 5.6.3
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: java.version=17.0.13
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: os.name=Windows 11
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: os.arch=amd64
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: os.version=10.0
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: file.encoding=Cp1252
-2025-09-05 13:00:32,886 INFO o.a.j.JMeter: java.awt.headless=true
-2025-09-05 13:00:32,887 INFO o.a.j.JMeter: Max memory     =1073741824
-2025-09-05 13:00:32,887 INFO o.a.j.JMeter: Available Processors =12
-2025-09-05 13:00:32,899 INFO o.a.j.JMeter: Default Locale=English (EN)
-2025-09-05 13:00:32,899 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2025-09-05 13:00:32,899 INFO o.a.j.JMeter: JMeterHome=C:\Program Files\apache-jmeter-5.6.3
-2025-09-05 13:00:32,899 INFO o.a.j.JMeter: user.dir  =D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST
-2025-09-05 13:00:32,900 INFO o.a.j.JMeter: PWD       =D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST
-2025-09-05 13:00:32,903 INFO o.a.j.JMeter: IP: 192.168.29.22 Name: RAVI FullName: RAVI
-2025-09-05 13:00:32,927 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030'
-2025-09-05 13:00:32,931 INFO o.a.j.s.FileServer: Default base='D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST'
-2025-09-05 13:00:32,932 INFO o.a.j.s.FileServer: Set new base='D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST'
-2025-09-05 13:00:33,234 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2025-09-05 13:00:33,286 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
-2025-09-05 13:00:33,291 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2025-09-05 13:00:33,296 INFO o.a.j.s.SaveService: Loading file: BUZZ_OPTIMIZED_PING_HANDLED_FINAL.jmx
-2025-09-05 13:00:33,474 INFO o.a.j.JMeter: Creating summariser <summary>
-2025-09-05 13:00:33,493 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
-2025-09-05 13:00:33,494 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: results\call_storm_20250509_130030.jtl
-2025-09-05 13:00:33,494 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: C:\Program Files\apache-jmeter-5.6.3\bin\reportgenerator.properties
-2025-09-05 13:00:33,496 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
-2025-09-05 13:00:33,502 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
-2025-09-05 13:00:33,506 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
-2025-09-05 13:00:33,513 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
-2025-09-05 13:00:33,514 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
-2025-09-05 13:00:33,514 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
-2025-09-05 13:00:33,514 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
-2025-09-05 13:00:33,514 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
-2025-09-05 13:00:33,515 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
-2025-09-05 13:00:33,515 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
-2025-09-05 13:00:33,521 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,522 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,522 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,522 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,522 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,522 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,523 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,523 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,523 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,523 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
-2025-09-05 13:00:33,524 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
-2025-09-05 13:00:33,546 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2025-09-05 13:00:33,547 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2025-09-05 13:00:33,547 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2025-09-05 13:00:33,555 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2025-09-05 13:00:33,555 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2025-09-05 13:00:33,611 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\jmeter-websocket-samplers-1.3.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
-2025-09-05 13:00:33,639 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\json-lib-2.4-jdk15.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
-2025-09-05 13:00:33,661 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
-2025-09-05 13:00:34,130 INFO o.a.j.JMeter: Running test (1757057434130)
-2025-09-05 13:00:34,154 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Callers (60 users)
-2025-09-05 13:00:34,154 INFO o.a.j.e.StandardJMeterEngine: Starting 60 threads for group Callers (60 users).
-2025-09-05 13:00:34,154 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2025-09-05 13:00:34,154 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=60 ramp-up=20 delayedStart=false
-2025-09-05 13:00:34,200 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-1
-2025-09-05 13:00:34,207 INFO o.a.j.s.FileServer: Stored: stress_test_users_120.csv
-2025-09-05 13:00:34,212 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2025-09-05 13:00:34,212 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Receivers (60 users)
-2025-09-05 13:00:34,213 INFO o.a.j.e.StandardJMeterEngine: Starting 60 threads for group Receivers (60 users).
-2025-09-05 13:00:34,213 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2025-09-05 13:00:34,213 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=60 ramp-up=20 delayedStart=false
-2025-09-05 13:00:34,215 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-1
-2025-09-05 13:00:34,265 INFO o.a.j.t.ThreadGroup: Started thread group number 2
-2025-09-05 13:00:34,266 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
-2025-09-05 13:00:34,523 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-2
-2025-09-05 13:00:34,548 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-2
-2025-09-05 13:00:34,860 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-3
-2025-09-05 13:00:34,882 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-3
-2025-09-05 13:00:35,192 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-4
-2025-09-05 13:00:35,214 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-4
-2025-09-05 13:00:35,268 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2025-09-05 13:00:35,268 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
-2025-09-05 13:00:35,270 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2025-09-05 13:00:35,270 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2025-09-05 13:00:35,361 INFO o.a.j.r.Summariser: summary +      1 in 00:00:01 =    0.8/s Avg:    78 Min:    78 Max:    78 Err:     0 (0.00%) Active: 8 Started: 8 Finished: 0
-2025-09-05 13:00:35,520 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-5
-2025-09-05 13:00:35,548 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-5
-2025-09-05 13:00:35,852 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-6
-2025-09-05 13:00:35,881 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-6
-2025-09-05 13:00:36,184 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-7
-2025-09-05 13:00:36,213 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-7
-2025-09-05 13:00:36,522 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-8
-2025-09-05 13:00:36,545 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-8
-2025-09-05 13:00:36,852 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-9
-2025-09-05 13:00:36,880 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-9
-2025-09-05 13:00:37,181 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-10
-2025-09-05 13:00:37,212 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-10
-2025-09-05 13:00:37,514 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-11
-2025-09-05 13:00:37,545 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-11
-2025-09-05 13:00:37,846 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-12
-2025-09-05 13:00:37,877 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-12
-2025-09-05 13:00:38,177 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-13
-2025-09-05 13:00:38,211 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-13
-2025-09-05 13:00:38,508 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-14
-2025-09-05 13:00:38,545 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-14
-2025-09-05 13:00:38,839 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-15
-2025-09-05 13:00:38,876 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-15
-2025-09-05 13:00:39,167 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-16
-2025-09-05 13:00:39,211 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-16
-2025-09-05 13:00:39,500 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-17
-2025-09-05 13:00:39,545 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-17
-2025-09-05 13:00:39,832 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-18
-2025-09-05 13:00:39,877 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-18
-2025-09-05 13:00:40,165 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-19
-2025-09-05 13:00:40,209 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-19
-2025-09-05 13:00:40,499 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-20
-2025-09-05 13:00:40,542 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-20
-2025-09-05 13:00:40,832 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-21
-2025-09-05 13:00:40,876 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-21
-2025-09-05 13:00:41,165 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-22
-2025-09-05 13:00:41,209 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-22
-2025-09-05 13:00:41,497 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-23
-2025-09-05 13:00:41,542 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-23
-2025-09-05 13:00:41,831 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-24
-2025-09-05 13:00:41,875 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-24
-2025-09-05 13:00:42,158 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-25
-2025-09-05 13:00:42,209 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-25
-2025-09-05 13:00:42,492 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-26
-2025-09-05 13:00:42,540 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-26
-2025-09-05 13:00:42,825 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-27
-2025-09-05 13:00:42,873 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-27
-2025-09-05 13:00:43,158 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-28
-2025-09-05 13:00:43,207 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-28
-2025-09-05 13:00:43,492 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-29
-2025-09-05 13:00:43,539 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-29
-2025-09-05 13:00:43,826 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-30
-2025-09-05 13:00:43,873 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-30
-2025-09-05 13:00:44,157 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-31
-2025-09-05 13:00:44,206 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-31
-2025-09-05 13:00:44,488 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-32
-2025-09-05 13:00:44,538 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-32
-2025-09-05 13:00:44,820 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-33
-2025-09-05 13:00:44,871 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-33
-2025-09-05 13:00:45,148 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-34
-2025-09-05 13:00:45,203 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-34
-2025-09-05 13:00:45,485 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-35
-2025-09-05 13:00:45,538 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-35
-2025-09-05 13:00:45,819 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-36
-2025-09-05 13:00:45,871 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-36
-2025-09-05 13:00:46,149 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-37
-2025-09-05 13:00:46,209 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-37
-2025-09-05 13:00:46,480 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-38
-2025-09-05 13:00:46,544 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-38
-2025-09-05 13:00:46,812 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-39
-2025-09-05 13:00:46,876 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-39
-2025-09-05 13:00:47,144 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-40
-2025-09-05 13:00:47,201 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-40
-2025-09-05 13:00:47,479 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-41
-2025-09-05 13:00:47,536 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-41
-2025-09-05 13:00:47,812 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-42
-2025-09-05 13:00:47,869 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-42
-2025-09-05 13:00:48,145 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-43
-2025-09-05 13:00:48,200 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-43
-2025-09-05 13:00:48,476 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-44
-2025-09-05 13:00:48,533 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-44
-2025-09-05 13:00:48,810 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-45
-2025-09-05 13:00:48,868 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-45
-2025-09-05 13:00:49,141 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-46
-2025-09-05 13:00:49,200 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-46
-2025-09-05 13:00:49,473 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-47
-2025-09-05 13:00:49,534 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-47
-2025-09-05 13:00:49,806 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-48
-2025-09-05 13:00:49,866 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-48
-2025-09-05 13:00:50,140 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-49
-2025-09-05 13:00:50,199 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-49
-2025-09-05 13:00:50,472 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-50
-2025-09-05 13:00:50,532 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-50
-2025-09-05 13:00:50,806 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-51
-2025-09-05 13:00:50,865 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-51
-2025-09-05 13:00:51,139 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-52
-2025-09-05 13:00:51,198 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-52
-2025-09-05 13:00:51,475 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-53
-2025-09-05 13:00:51,531 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-53
-2025-09-05 13:00:51,804 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-54
-2025-09-05 13:00:51,864 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-54
-2025-09-05 13:00:52,138 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-55
-2025-09-05 13:00:52,197 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-55
-2025-09-05 13:00:52,470 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-56
-2025-09-05 13:00:52,529 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-56
-2025-09-05 13:00:52,804 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-57
-2025-09-05 13:00:52,863 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-57
-2025-09-05 13:00:53,137 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-58
-2025-09-05 13:00:53,197 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-58
-2025-09-05 13:00:53,470 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-59
-2025-09-05 13:00:53,530 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-59
-2025-09-05 13:00:53,803 INFO o.a.j.t.JMeterThread: Thread started: Callers (60 users) 1-60
-2025-09-05 13:00:53,861 INFO o.a.j.t.JMeterThread: Thread started: Receivers (60 users) 2-60
-2025-09-05 13:01:00,028 INFO o.a.j.r.Summariser: summary +    698 in 00:00:25 =   28.3/s Avg:   844 Min:     0 Max:  6002 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
-2025-09-05 13:01:00,028 INFO o.a.j.r.Summariser: summary =    699 in 00:00:26 =   27.0/s Avg:   843 Min:     0 Max:  6002 Err:     0 (0.00%)
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:20,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:20,091 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:20,631 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:20,693 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:21,271 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-10
-2025-09-05 13:01:21,271 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-10
-2025-09-05 13:01:21,331 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-3
-2025-09-05 13:01:21,331 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-3
-2025-09-05 13:01:21,770 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:21,866 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:22,735 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:22,890 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:23,052 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:23,451 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:23,451 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-5
-2025-09-05 13:01:23,451 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-5
-2025-09-05 13:01:23,575 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:23,771 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-9
-2025-09-05 13:01:23,771 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-9
-2025-09-05 13:01:23,921 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-6
-2025-09-05 13:01:23,921 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-6
-2025-09-05 13:01:24,313 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:24,313 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-11
-2025-09-05 13:01:24,313 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-11
-2025-09-05 13:01:24,375 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-13
-2025-09-05 13:01:24,375 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-13
-2025-09-05 13:01:24,728 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:24,733 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-4
-2025-09-05 13:01:24,733 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-4
-2025-09-05 13:01:25,386 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:25,386 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-7
-2025-09-05 13:01:25,386 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-7
-2025-09-05 13:01:25,501 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:25,501 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-17
-2025-09-05 13:01:25,501 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-17
-2025-09-05 13:01:25,982 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:26,027 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:26,104 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:26,110 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:26,157 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-26
-2025-09-05 13:01:26,158 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-26
-2025-09-05 13:01:26,176 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:26,221 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:26,340 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:26,341 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-14
-2025-09-05 13:01:26,341 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-14
-2025-09-05 13:01:26,539 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:26,617 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:26,617 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-15
-2025-09-05 13:01:26,617 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-15
-2025-09-05 13:01:27,035 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-28
-2025-09-05 13:01:27,035 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-28
-2025-09-05 13:01:27,386 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-23
-2025-09-05 13:01:27,386 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-23
-2025-09-05 13:01:27,513 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:27,573 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:27,574 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-2
-2025-09-05 13:01:27,574 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-2
-2025-09-05 13:01:28,633 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:28,633 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-22
-2025-09-05 13:01:28,633 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-22
-2025-09-05 13:01:28,695 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:28,695 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-24
-2025-09-05 13:01:28,695 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-24
-2025-09-05 13:01:28,695 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-1
-2025-09-05 13:01:28,695 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-1
-2025-09-05 13:01:28,806 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-19
-2025-09-05 13:01:28,807 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-19
-2025-09-05 13:01:28,911 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:29,081 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:29,081 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-12
-2025-09-05 13:01:29,082 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-12
-2025-09-05 13:01:29,150 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-8
-2025-09-05 13:01:29,150 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-8
-2025-09-05 13:01:29,493 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-38
-2025-09-05 13:01:29,493 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-38
-2025-09-05 13:01:29,575 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-16
-2025-09-05 13:01:29,575 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-16
-2025-09-05 13:01:29,792 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:29,887 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-27
-2025-09-05 13:01:29,887 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-27
-2025-09-05 13:01:29,890 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-34
-2025-09-05 13:01:29,890 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-34
-2025-09-05 13:01:29,994 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:30,052 INFO o.a.j.r.Summariser: summary +   1047 in 00:00:30 =   34.9/s Avg:  1304 Min:     0 Max:  6003 Err:     0 (0.00%) Active: 94 Started: 120 Finished: 26
-2025-09-05 13:01:30,053 INFO o.a.j.r.Summariser: summary =   1746 in 00:00:56 =   31.2/s Avg:  1120 Min:     0 Max:  6003 Err:     0 (0.00%)
-2025-09-05 13:01:30,069 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-32
-2025-09-05 13:01:30,069 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-32
-2025-09-05 13:01:30,411 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-46
-2025-09-05 13:01:30,412 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-46
-2025-09-05 13:01:30,701 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-31
-2025-09-05 13:01:30,702 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-31
-2025-09-05 13:01:31,094 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:31,500 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:01:31,566 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-21
-2025-09-05 13:01:31,566 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-21
-2025-09-05 13:01:31,759 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-41
-2025-09-05 13:01:31,759 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-41
-2025-09-05 13:01:32,594 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:32,714 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-43
-2025-09-05 13:01:32,714 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-43
-2025-09-05 13:01:33,322 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:33,323 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-40
-2025-09-05 13:01:33,323 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-40
-2025-09-05 13:01:33,440 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-35
-2025-09-05 13:01:33,440 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-35
-2025-09-05 13:01:33,984 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-33
-2025-09-05 13:01:33,984 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-33
-2025-09-05 13:01:34,165 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-20
-2025-09-05 13:01:34,165 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-20
-2025-09-05 13:01:34,292 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:34,292 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-29
-2025-09-05 13:01:34,293 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-29
-2025-09-05 13:01:34,450 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-37
-2025-09-05 13:01:34,450 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-37
-2025-09-05 13:01:34,732 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:34,732 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-42
-2025-09-05 13:01:34,732 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-42
-2025-09-05 13:01:34,890 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-44
-2025-09-05 13:01:34,890 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-44
-2025-09-05 13:01:35,067 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:35,067 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-45
-2025-09-05 13:01:35,067 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-45
-2025-09-05 13:01:35,679 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:35,679 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-50
-2025-09-05 13:01:35,679 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-50
-2025-09-05 13:01:35,736 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-49
-2025-09-05 13:01:35,736 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-49
-2025-09-05 13:01:35,769 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:35,769 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-30
-2025-09-05 13:01:35,769 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-30
-2025-09-05 13:01:36,093 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-25
-2025-09-05 13:01:36,093 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-25
-2025-09-05 13:01:36,228 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-18
-2025-09-05 13:01:36,228 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-18
-2025-09-05 13:01:36,476 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-56
-2025-09-05 13:01:36,476 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-56
-2025-09-05 13:01:36,580 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-52
-2025-09-05 13:01:36,580 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-52
-2025-09-05 13:01:37,417 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-47
-2025-09-05 13:01:37,417 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-47
-2025-09-05 13:01:37,554 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-36
-2025-09-05 13:01:37,554 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-36
-2025-09-05 13:01:37,593 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:37,593 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-54
-2025-09-05 13:01:37,594 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-54
-2025-09-05 13:01:37,689 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:37,689 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-48
-2025-09-05 13:01:37,689 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-48
-2025-09-05 13:01:38,149 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-39
-2025-09-05 13:01:38,149 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-39
-2025-09-05 13:01:38,356 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-55
-2025-09-05 13:01:38,356 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-55
-2025-09-05 13:01:38,585 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-58
-2025-09-05 13:01:38,585 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-58
-2025-09-05 13:01:39,396 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-51
-2025-09-05 13:01:39,396 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-51
-2025-09-05 13:01:41,331 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-60
-2025-09-05 13:01:41,331 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-60
-2025-09-05 13:01:42,268 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-59
-2025-09-05 13:01:42,268 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-59
-2025-09-05 13:01:42,369 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-53
-2025-09-05 13:01:42,369 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-53
-2025-09-05 13:01:43,140 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
-2025-09-05 13:01:43,141 INFO o.a.j.t.JMeterThread: Thread is done: Callers (60 users) 1-57
-2025-09-05 13:01:43,141 INFO o.a.j.t.JMeterThread: Thread finished: Callers (60 users) 1-57
-2025-09-05 13:01:43,581 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:00,696 INFO o.a.j.r.Summariser: summary +    539 in 00:00:31 =   17.6/s Avg:  2634 Min:     0 Max:  6002 Err:     0 (0.00%) Active: 60 Started: 120 Finished: 60
-2025-09-05 13:02:00,697 INFO o.a.j.r.Summariser: summary =   2285 in 00:01:27 =   26.4/s Avg:  1477 Min:     0 Max:  6003 Err:     0 (0.00%)
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,039 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:19,041 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:25,165 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:25,375 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '04 - Call Received': Ping frame with no application data
-2025-09-05 13:02:30,796 INFO o.a.j.r.Summariser: summary +    338 in 00:00:30 =   11.2/s Avg:  4811 Min:     0 Max:  6002 Err:     0 (0.00%) Active: 60 Started: 120 Finished: 60
-2025-09-05 13:02:30,796 INFO o.a.j.r.Summariser: summary =   2623 in 00:01:57 =   22.5/s Avg:  1907 Min:     0 Max:  6003 Err:     0 (0.00%)
-2025-09-05 13:02:30,797 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-24
-2025-09-05 13:02:30,838 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-27
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-21
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-35
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-25
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-21
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-18
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-41
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-25
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-60
-2025-09-05 13:02:37,046 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-18
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-31
-2025-09-05 13:02:37,045 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-35
-2025-09-05 13:02:37,046 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-31
-2025-09-05 13:02:37,046 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-41
-2025-09-05 13:02:37,046 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-60
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-2
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-33
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-2
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-33
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-10
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-10
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-45
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-45
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-39
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-4
-2025-09-05 13:02:37,054 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-39
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-19
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-50
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-22
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-3
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-28
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-53
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-3
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-32
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-4
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-36
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-28
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-53
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-5
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-22
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-16
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-36
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-32
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-40
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-19
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-1
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-54
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-40
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-26
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-48
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-55
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-54
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-26
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-30
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-37
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-16
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-38
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-7
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-5
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-38
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-37
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-7
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-30
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-55
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-48
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-50
-2025-09-05 13:02:37,055 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-1
-2025-09-05 13:02:37,057 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-44
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-9
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-47
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-44
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-42
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-34
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-56
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-9
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-42
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-17
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-34
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-47
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-56
-2025-09-05 13:02:37,058 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-17
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-15
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-51
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-12
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-43
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-11
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-59
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-8
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-46
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-23
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-59
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-20
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-46
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-57
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-13
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-8
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-13
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-29
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-49
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-51
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-43
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-6
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-15
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-49
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-58
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-6
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-12
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-29
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-23
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-14
-2025-09-05 13:02:37,069 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-11
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-57
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-14
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-20
-2025-09-05 13:02:37,070 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-58
-2025-09-05 13:02:37,178 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Receivers (60 users) 2-52
-2025-09-05 13:02:37,178 INFO o.a.j.t.JMeterThread: Thread finished: Receivers (60 users) 2-52
-2025-09-05 13:02:37,179 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2025-09-05 13:02:37,179 INFO o.a.j.s.FileServer: Close: stress_test_users_120.csv
-2025-09-05 13:02:37,183 INFO o.a.j.r.Summariser: summary +    117 in 00:00:06 =   18.3/s Avg:  5955 Min:     1 Max:  6015 Err:     0 (0.00%) Active: 0 Started: 120 Finished: 120
-2025-09-05 13:02:37,183 INFO o.a.j.r.Summariser: summary =   2740 in 00:02:03 =   22.3/s Avg:  2079 Min:     0 Max:  6015 Err:     0 (0.00%)
-2025-09-05 13:02:37,184 INFO o.a.j.JMeter: Generating Dashboard
-2025-09-05 13:02:37,184 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
-2025-09-05 13:02:37,210 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
-2025-09-05 13:02:37,440 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
-2025-09-05 13:02:37,440 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
-2025-09-05 13:02:37,443 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
-2025-09-05 13:02:37,443 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
-2025-09-05 13:02:37,451 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
-2025-09-05 13:02:37,458 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
-2025-09-05 13:02:37,458 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
-2025-09-05 13:02:37,458 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
-2025-09-05 13:02:37,494 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
-2025-09-05 13:02:37,495 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
-2025-09-05 13:02:37,495 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
-2025-09-05 13:02:37,495 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
-2025-09-05 13:02:37,532 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
-2025-09-05 13:02:37,533 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 19180 samples
-2025-09-05 13:02:37,533 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
-2025-09-05 13:02:37,533 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
-2025-09-05 13:02:37,533 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
-2025-09-05 13:02:37,535 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
-2025-09-05 13:02:37,535 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
-2025-09-05 13:02:37,535 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
-2025-09-05 13:02:37,540 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 41100 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 8220 samples
-2025-09-05 13:02:37,541 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 2740 samples
-2025-09-05 13:02:37,542 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 2740 samples produced in 289ms on channel 0
-2025-09-05 13:02:37,542 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
-2025-09-05 13:02:37,654 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
-2025-09-05 13:02:37,654 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
-2025-09-05 13:02:37,654 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
-2025-09-05 13:02:37,654 INFO o.a.j.r.d.JsonExporter: Checking output folder
-2025-09-05 13:02:37,658 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030\statistics.json
-2025-09-05 13:02:37,713 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
-2025-09-05 13:02:37,717 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030
-2025-09-05 13:02:37,902 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030, creating folder structure
-2025-09-05 13:02:37,904 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'C:\Program Files\apache-jmeter-5.6.3\bin\report-template' to 'D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030', got message: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030, found non empty folder with following content [D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_130030\statistics.json], will be ignored
-2025-09-05 13:02:38,221 INFO o.a.j.JMeter: Dashboard generated
+2025-09-05 15:04:58,110 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-09-05 15:04:58,147 INFO o.a.j.JMeter: Loading user properties from: C:\Program Files\apache-jmeter-5.6.3\bin\user.properties
+2025-09-05 15:04:58,148 INFO o.a.j.JMeter: Loading system properties from: C:\Program Files\apache-jmeter-5.6.3\bin\system.properties
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: Version 5.6.3
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: java.version=17.0.13
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: os.name=Windows 11
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: os.arch=amd64
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: os.version=10.0
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: file.encoding=Cp1252
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: java.awt.headless=true
+2025-09-05 15:04:58,162 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-09-05 15:04:58,164 INFO o.a.j.JMeter: Available Processors =12
+2025-09-05 15:04:58,176 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-09-05 15:04:58,177 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-09-05 15:04:58,177 INFO o.a.j.JMeter: JMeterHome=C:\Program Files\apache-jmeter-5.6.3
+2025-09-05 15:04:58,177 INFO o.a.j.JMeter: user.dir  =D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST
+2025-09-05 15:04:58,177 INFO o.a.j.JMeter: PWD       =D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST
+2025-09-05 15:04:58,179 INFO o.a.j.JMeter: IP: 192.168.29.22 Name: RAVI FullName: RAVI
+2025-09-05 15:04:58,205 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456'
+2025-09-05 15:04:58,208 INFO o.a.j.s.FileServer: Default base='D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST'
+2025-09-05 15:04:58,210 INFO o.a.j.s.FileServer: Set new base='D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST'
+2025-09-05 15:04:58,522 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2025-09-05 15:04:58,560 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2025-09-05 15:04:58,564 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2025-09-05 15:04:58,570 INFO o.a.j.s.SaveService: Loading file: BUZZ_OPTIMIZED_PING_HANDLED_FINAL.jmx
+2025-09-05 15:04:58,737 INFO o.a.j.JMeter: Creating summariser <summary>
+2025-09-05 15:04:58,753 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2025-09-05 15:04:58,753 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: results\call_storm_20250509_150456.jtl
+2025-09-05 15:04:58,755 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: C:\Program Files\apache-jmeter-5.6.3\bin\reportgenerator.properties
+2025-09-05 15:04:58,756 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2025-09-05 15:04:58,761 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2025-09-05 15:04:58,765 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2025-09-05 15:04:58,773 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2025-09-05 15:04:58,773 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2025-09-05 15:04:58,773 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2025-09-05 15:04:58,773 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2025-09-05 15:04:58,773 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2025-09-05 15:04:58,774 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2025-09-05 15:04:58,774 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2025-09-05 15:04:58,780 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,780 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,781 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2025-09-05 15:04:58,782 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2025-09-05 15:04:58,782 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2025-09-05 15:04:58,782 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2025-09-05 15:04:58,783 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2025-09-05 15:04:58,783 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2025-09-05 15:04:58,783 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2025-09-05 15:04:58,799 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2025-09-05 15:04:58,800 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-09-05 15:04:58,800 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-09-05 15:04:58,810 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2025-09-05 15:04:58,811 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2025-09-05 15:04:58,873 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\jmeter-websocket-samplers-1.3.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-09-05 15:04:58,902 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\json-lib-2.4-jdk15.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-09-05 15:04:58,925 INFO o.a.j.r.ClassFinder: Will scan jar C:\Program Files\apache-jmeter-5.6.3\lib\ext\jmeter-plugins-manager.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-09-05 15:04:59,346 INFO o.a.j.JMeter: Running test (1757064899346)
+2025-09-05 15:04:59,366 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : All Users (120 users)
+2025-09-05 15:04:59,366 INFO o.a.j.e.StandardJMeterEngine: Starting 120 threads for group All Users (120 users).
+2025-09-05 15:04:59,366 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-09-05 15:04:59,366 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=120 ramp-up=30 delayedStart=false
+2025-09-05 15:04:59,396 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-1
+2025-09-05 15:04:59,399 INFO o.a.j.s.FileServer: Stored: stress_test_users_120.csv
+2025-09-05 15:04:59,492 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2025-09-05 15:04:59,492 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2025-09-05 15:04:59,636 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-2
+2025-09-05 15:04:59,893 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-3
+2025-09-05 15:05:00,136 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-4
+2025-09-05 15:05:00,382 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-5
+2025-09-05 15:05:00,443 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2025-09-05 15:05:00,443 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2025-09-05 15:05:00,444 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2025-09-05 15:05:00,444 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2025-09-05 15:05:00,577 INFO o.a.j.r.Summariser: summary +      1 in 00:00:01 =    0.8/s Avg:   124 Min:   124 Max:   124 Err:     0 (0.00%) Active: 5 Started: 5 Finished: 0
+2025-09-05 15:05:00,636 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-6
+2025-09-05 15:05:00,881 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-7
+2025-09-05 15:05:01,138 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-8
+2025-09-05 15:05:01,381 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-9
+2025-09-05 15:05:01,626 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-10
+2025-09-05 15:05:01,876 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-11
+2025-09-05 15:05:02,131 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-12
+2025-09-05 15:05:02,374 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-13
+2025-09-05 15:05:02,628 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-14
+2025-09-05 15:05:02,876 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-15
+2025-09-05 15:05:03,122 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-16
+2025-09-05 15:05:03,374 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-17
+2025-09-05 15:05:03,626 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-18
+2025-09-05 15:05:03,874 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-19
+2025-09-05 15:05:04,121 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-20
+2025-09-05 15:05:04,372 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-21
+2025-09-05 15:05:04,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-22
+2025-09-05 15:05:04,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-23
+2025-09-05 15:05:05,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-24
+2025-09-05 15:05:05,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-25
+2025-09-05 15:05:05,621 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-26
+2025-09-05 15:05:05,872 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-27
+2025-09-05 15:05:06,126 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-28
+2025-09-05 15:05:06,371 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-29
+2025-09-05 15:05:06,623 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-30
+2025-09-05 15:05:06,871 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-31
+2025-09-05 15:05:07,124 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-32
+2025-09-05 15:05:07,372 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-33
+2025-09-05 15:05:07,621 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-34
+2025-09-05 15:05:07,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-35
+2025-09-05 15:05:08,121 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-36
+2025-09-05 15:05:08,371 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-37
+2025-09-05 15:05:08,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-38
+2025-09-05 15:05:08,871 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-39
+2025-09-05 15:05:09,120 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-40
+2025-09-05 15:05:09,374 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-41
+2025-09-05 15:05:09,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-42
+2025-09-05 15:05:09,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-43
+2025-09-05 15:05:10,123 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-44
+2025-09-05 15:05:10,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-45
+2025-09-05 15:05:10,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-46
+2025-09-05 15:05:10,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-47
+2025-09-05 15:05:11,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-48
+2025-09-05 15:05:11,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-49
+2025-09-05 15:05:11,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-50
+2025-09-05 15:05:11,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-51
+2025-09-05 15:05:12,121 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-52
+2025-09-05 15:05:12,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-53
+2025-09-05 15:05:12,618 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-54
+2025-09-05 15:05:12,868 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-55
+2025-09-05 15:05:13,120 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-56
+2025-09-05 15:05:13,371 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-57
+2025-09-05 15:05:13,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-58
+2025-09-05 15:05:13,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-59
+2025-09-05 15:05:14,121 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-60
+2025-09-05 15:05:14,371 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-61
+2025-09-05 15:05:14,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-62
+2025-09-05 15:05:14,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-63
+2025-09-05 15:05:15,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-64
+2025-09-05 15:05:15,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-65
+2025-09-05 15:05:15,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-66
+2025-09-05 15:05:15,868 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-67
+2025-09-05 15:05:16,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-68
+2025-09-05 15:05:16,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-69
+2025-09-05 15:05:16,621 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-70
+2025-09-05 15:05:16,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-71
+2025-09-05 15:05:17,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-72
+2025-09-05 15:05:17,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-73
+2025-09-05 15:05:17,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-74
+2025-09-05 15:05:17,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-75
+2025-09-05 15:05:18,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-76
+2025-09-05 15:05:18,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-77
+2025-09-05 15:05:18,620 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-78
+2025-09-05 15:05:18,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-79
+2025-09-05 15:05:19,120 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-80
+2025-09-05 15:05:19,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-81
+2025-09-05 15:05:19,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-82
+2025-09-05 15:05:19,868 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-83
+2025-09-05 15:05:20,118 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-84
+2025-09-05 15:05:20,372 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-85
+2025-09-05 15:05:20,621 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-86
+2025-09-05 15:05:20,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-87
+2025-09-05 15:05:21,118 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-88
+2025-09-05 15:05:21,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-89
+2025-09-05 15:05:21,618 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-90
+2025-09-05 15:05:21,870 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-91
+2025-09-05 15:05:22,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-92
+2025-09-05 15:05:22,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-93
+2025-09-05 15:05:22,621 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-94
+2025-09-05 15:05:22,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-95
+2025-09-05 15:05:23,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-96
+2025-09-05 15:05:23,373 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-97
+2025-09-05 15:05:23,623 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-98
+2025-09-05 15:05:23,874 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-99
+2025-09-05 15:05:24,121 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-100
+2025-09-05 15:05:24,372 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-101
+2025-09-05 15:05:24,416 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:24,452 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:24,618 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-102
+2025-09-05 15:05:24,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-103
+2025-09-05 15:05:25,118 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-104
+2025-09-05 15:05:25,370 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-105
+2025-09-05 15:05:25,618 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-106
+2025-09-05 15:05:25,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-107
+2025-09-05 15:05:26,118 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-108
+2025-09-05 15:05:26,367 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:26,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-109
+2025-09-05 15:05:26,618 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-110
+2025-09-05 15:05:26,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-111
+2025-09-05 15:05:27,120 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-112
+2025-09-05 15:05:27,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-113
+2025-09-05 15:05:27,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-114
+2025-09-05 15:05:27,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-115
+2025-09-05 15:05:28,119 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-116
+2025-09-05 15:05:28,369 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-117
+2025-09-05 15:05:28,619 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-118
+2025-09-05 15:05:28,689 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:28,869 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-119
+2025-09-05 15:05:28,923 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:29,118 INFO o.a.j.t.JMeterThread: Thread started: All Users (120 users) 1-120
+2025-09-05 15:05:30,083 INFO o.a.j.r.Summariser: summary +    441 in 00:00:30 =   14.9/s Avg:    30 Min:     0 Max:  1338 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:05:30,084 INFO o.a.j.r.Summariser: summary =    442 in 00:00:31 =   14.4/s Avg:    31 Min:     0 Max:  1338 Err:     0 (0.00%)
+2025-09-05 15:05:30,100 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:30,297 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:30,516 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:31,107 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:32,221 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:32,287 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:32,647 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:32,835 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:33,152 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:33,380 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:33,500 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:33,939 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:34,484 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:34,898 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:35,401 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:36,018 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:36,349 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:36,652 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:36,988 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:37,089 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:37,364 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:38,266 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:39,016 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:39,126 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:39,232 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:39,352 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:39,371 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:39,795 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:39,808 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:40,223 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:40,774 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:40,994 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:41,773 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:41,921 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:41,977 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:42,051 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:42,101 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:43,029 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:43,358 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:43,804 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:43,976 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:44,424 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:44,654 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:44,927 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:44,984 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:45,495 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:45,508 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:45,583 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:45,759 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:46,208 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:46,332 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:46,424 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:47,426 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:47,672 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:47,885 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:48,222 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:48,386 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:49,621 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:49,709 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:49,898 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:50,337 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:51,965 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:52,651 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:54,424 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:05:54,455 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:55,464 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:56,348 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:05:56,382 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:00,151 INFO o.a.j.r.Summariser: summary +    518 in 00:00:30 =   17.2/s Avg:   160 Min:     0 Max:  6001 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:06:00,151 INFO o.a.j.r.Summariser: summary =    960 in 00:01:01 =   15.8/s Avg:   100 Min:     0 Max:  6001 Err:     0 (0.00%)
+2025-09-05 15:06:15,843 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:19,024 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:19,026 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:19,026 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:19,026 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:20,636 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:22,195 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:22,373 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:22,608 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:22,714 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:22,726 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:23,040 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:23,816 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:26,012 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:26,775 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:27,474 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:27,673 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:27,821 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:28,052 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:28,355 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:28,618 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:29,605 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:30,077 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:30,078 INFO o.a.j.r.Summariser: summary +    481 in 00:00:30 =   16.1/s Avg:   307 Min:     0 Max:  6002 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:06:30,078 INFO o.a.j.r.Summariser: summary =   1441 in 00:01:31 =   15.9/s Avg:   169 Min:     0 Max:  6002 Err:     0 (0.00%)
+2025-09-05 15:06:30,585 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:30,812 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:30,972 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:31,470 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:31,725 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:31,986 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:32,134 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:32,176 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:32,361 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:32,732 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:32,816 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:33,197 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:35,225 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:36,342 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:37,248 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:37,354 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:37,632 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:38,995 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:39,305 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:39,650 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:39,848 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:40,271 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:41,028 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:42,194 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:43,415 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:43,726 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:45,052 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:45,654 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:45,914 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:46,460 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:46,789 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:47,099 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:47,186 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:47,199 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:48,342 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:49,368 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:50,035 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:51,172 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:51,689 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:52,587 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:54,151 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:54,180 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:54,445 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:54,665 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:55,983 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:56,108 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:56,620 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:57,221 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:57,522 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:57,711 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:58,701 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:06:59,302 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:06:59,803 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:00,005 INFO o.a.j.r.Summariser: summary +    486 in 00:00:30 =   16.2/s Avg:   236 Min:     0 Max:  6007 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:07:00,008 INFO o.a.j.r.Summariser: summary =   1927 in 00:02:01 =   16.0/s Avg:   186 Min:     0 Max:  6007 Err:     0 (0.00%)
+2025-09-05 15:07:00,190 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:01,341 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:01,388 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:01,949 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:04,573 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:04,836 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:07,102 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:07,543 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:08,075 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:13,673 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:15,805 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:16,802 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:17,444 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:19,038 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:19,042 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:19,042 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:19,042 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:19,042 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:19,719 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:20,252 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:20,941 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:21,439 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:21,581 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:21,612 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:22,312 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:23,238 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,019 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,127 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,142 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,142 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,267 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,283 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,299 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,408 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,702 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:24,795 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:25,139 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:25,341 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:25,714 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:25,979 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:26,042 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:27,054 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:27,069 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:27,630 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:28,097 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:29,383 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:30,019 INFO o.a.j.r.Summariser: summary +    498 in 00:00:30 =   16.6/s Avg:   277 Min:     0 Max:  6015 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:07:30,020 INFO o.a.j.r.Summariser: summary =   2425 in 00:02:31 =   16.1/s Avg:   205 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:07:31,985 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:32,468 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:32,937 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:33,979 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:34,715 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:35,866 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:38,022 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:38,162 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:38,441 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:38,627 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:38,722 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:39,311 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:39,915 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:40,507 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:43,152 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:44,492 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:44,912 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:45,274 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:45,678 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:46,753 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:47,204 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:47,572 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:50,442 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:55,369 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:55,511 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:55,589 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:56,135 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:56,585 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:57,835 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:07:58,005 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:07:58,300 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:00,033 INFO o.a.j.r.Summariser: summary +    479 in 00:00:30 =   16.0/s Avg:   248 Min:     0 Max:  6015 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:08:00,035 INFO o.a.j.r.Summariser: summary =   2904 in 00:03:01 =   16.1/s Avg:   212 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:08:00,945 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:01,786 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:03,247 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:04,146 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:05,391 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:06,014 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:06,090 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:07,683 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:07,960 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:09,068 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:09,986 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:11,467 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:11,467 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:12,180 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:12,870 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:12,885 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:14,068 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:14,814 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:18,301 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:18,364 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:19,022 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:19,022 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:19,022 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:19,022 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:19,023 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:19,377 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:20,127 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:20,268 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:20,596 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:20,828 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:21,060 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:21,092 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:21,217 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:21,744 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:22,901 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:22,948 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:23,388 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:23,717 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:23,983 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:24,199 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:24,215 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:27,150 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:28,861 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:29,195 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:29,771 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:30,005 INFO o.a.j.r.Summariser: summary +    480 in 00:00:30 =   16.0/s Avg:   248 Min:     0 Max:  6013 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:08:30,006 INFO o.a.j.r.Summariser: summary =   3384 in 00:03:31 =   16.1/s Avg:   217 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:08:30,397 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:31,136 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:31,830 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:31,983 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:32,519 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:33,024 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:33,814 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:34,021 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:34,436 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:34,573 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:34,807 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:35,075 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:35,097 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:35,654 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:36,186 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:36,240 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:36,990 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:36,995 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:37,154 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:37,507 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:39,353 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:40,947 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:41,068 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:41,272 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:41,544 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:41,642 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:41,669 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:41,811 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:41,947 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:44,877 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:46,219 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:46,782 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:48,305 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:48,957 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:48,965 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:48,988 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:49,879 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:50,435 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:52,848 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:53,073 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:55,032 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:56,642 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:57,120 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:08:58,435 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:59,195 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:59,219 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:08:59,885 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:00,018 INFO o.a.j.r.Summariser: summary +    486 in 00:00:30 =   16.2/s Avg:   252 Min:     0 Max:  6001 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:09:00,019 INFO o.a.j.r.Summariser: summary =   3870 in 00:04:01 =   16.1/s Avg:   221 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:09:00,685 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:01,266 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:01,970 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:03,796 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:05,125 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:05,481 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:05,605 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:05,974 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:06,648 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:08,108 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:08,768 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:08,859 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:12,583 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:12,808 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:13,744 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:17,258 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:19,062 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:19,062 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:19,062 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:19,257 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:20,219 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:21,285 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:21,609 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:21,950 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:22,152 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:22,380 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:22,452 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:23,351 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:23,534 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:24,162 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:24,201 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:24,871 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:25,674 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:26,490 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:26,821 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:27,839 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:28,323 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:29,533 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:29,885 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:29,937 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:30,008 INFO o.a.j.r.Summariser: summary +    485 in 00:00:30 =   16.2/s Avg:   137 Min:     0 Max:  6003 Err:     0 (0.00%) Active: 120 Started: 120 Finished: 0
+2025-09-05 15:09:30,009 INFO o.a.j.r.Summariser: summary =   4355 in 00:04:31 =   16.1/s Avg:   212 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:09:31,451 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:31,454 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:32,142 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:32,960 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:33,178 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:33,758 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:34,480 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:34,655 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:34,970 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:36,578 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:37,137 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:37,605 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:37,999 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:38,465 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:39,466 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:40,185 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:40,671 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:40,826 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:41,409 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:41,862 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:41,873 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:41,893 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:42,702 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:42,890 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:44,125 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:44,478 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:47,635 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-34
+2025-09-05 15:09:48,320 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-96
+2025-09-05 15:09:48,967 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-53
+2025-09-05 15:09:49,933 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:50,097 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:50,349 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-74
+2025-09-05 15:09:50,497 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-100
+2025-09-05 15:09:50,573 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-83
+2025-09-05 15:09:50,705 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-16
+2025-09-05 15:09:51,092 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-120
+2025-09-05 15:09:51,127 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-88
+2025-09-05 15:09:51,203 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-85
+2025-09-05 15:09:51,658 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-67
+2025-09-05 15:09:51,675 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-71
+2025-09-05 15:09:51,947 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-12
+2025-09-05 15:09:51,986 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-72
+2025-09-05 15:09:52,130 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-119
+2025-09-05 15:09:52,145 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-47
+2025-09-05 15:09:52,375 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-4
+2025-09-05 15:09:52,487 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-18
+2025-09-05 15:09:52,605 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-70
+2025-09-05 15:09:52,830 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:53,001 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-95
+2025-09-05 15:09:53,053 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-48
+2025-09-05 15:09:53,099 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-45
+2025-09-05 15:09:53,124 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-1
+2025-09-05 15:09:53,130 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-44
+2025-09-05 15:09:53,188 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-43
+2025-09-05 15:09:53,245 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-14
+2025-09-05 15:09:53,343 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler 'Caller - Read Response': Ping frame with no application data
+2025-09-05 15:09:53,867 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-81
+2025-09-05 15:09:53,885 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-50
+2025-09-05 15:09:54,008 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-27
+2025-09-05 15:09:54,013 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-13
+2025-09-05 15:09:54,029 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-9
+2025-09-05 15:09:54,124 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-75
+2025-09-05 15:09:54,248 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-68
+2025-09-05 15:09:54,379 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-113
+2025-09-05 15:09:54,450 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-80
+2025-09-05 15:09:54,551 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-114
+2025-09-05 15:09:54,607 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-38
+2025-09-05 15:09:54,625 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-106
+2025-09-05 15:09:54,642 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-87
+2025-09-05 15:09:54,716 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-94
+2025-09-05 15:09:54,721 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-54
+2025-09-05 15:09:54,891 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-61
+2025-09-05 15:09:55,188 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-90
+2025-09-05 15:09:55,235 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-76
+2025-09-05 15:09:55,270 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-112
+2025-09-05 15:09:55,413 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-10
+2025-09-05 15:09:55,439 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-117
+2025-09-05 15:09:55,445 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-59
+2025-09-05 15:09:55,454 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-51
+2025-09-05 15:09:55,465 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-82
+2025-09-05 15:09:55,494 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-17
+2025-09-05 15:09:55,511 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-26
+2025-09-05 15:09:55,529 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-36
+2025-09-05 15:09:55,532 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-66
+2025-09-05 15:09:55,748 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-84
+2025-09-05 15:09:55,794 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-35
+2025-09-05 15:09:55,879 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-78
+2025-09-05 15:09:56,030 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-98
+2025-09-05 15:09:56,231 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-116
+2025-09-05 15:09:56,314 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-6
+2025-09-05 15:09:56,335 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-11
+2025-09-05 15:09:56,416 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-118
+2025-09-05 15:09:56,474 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-49
+2025-09-05 15:09:56,525 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-65
+2025-09-05 15:09:56,567 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-29
+2025-09-05 15:09:56,581 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-30
+2025-09-05 15:09:56,641 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-110
+2025-09-05 15:09:56,774 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-79
+2025-09-05 15:09:56,780 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-8
+2025-09-05 15:09:56,904 ERROR e.l.j.w.SingleReadWebSocketSampler: Unexpected frame type received in sampler '05 - Call Received': Ping frame with no application data
+2025-09-05 15:09:56,904 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-86
+2025-09-05 15:09:56,986 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-62
+2025-09-05 15:09:56,986 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-31
+2025-09-05 15:09:57,052 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-56
+2025-09-05 15:09:57,069 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-21
+2025-09-05 15:09:57,160 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-55
+2025-09-05 15:09:57,165 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-37
+2025-09-05 15:09:57,191 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-23
+2025-09-05 15:09:57,334 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-28
+2025-09-05 15:09:57,356 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-46
+2025-09-05 15:09:57,407 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-93
+2025-09-05 15:09:57,410 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-99
+2025-09-05 15:09:57,633 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-42
+2025-09-05 15:09:57,634 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-3
+2025-09-05 15:09:57,665 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-111
+2025-09-05 15:09:57,715 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-115
+2025-09-05 15:09:57,762 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-41
+2025-09-05 15:09:57,770 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-89
+2025-09-05 15:09:57,778 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-52
+2025-09-05 15:09:57,933 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-58
+2025-09-05 15:09:57,945 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-91
+2025-09-05 15:09:57,970 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-97
+2025-09-05 15:09:58,027 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-103
+2025-09-05 15:09:58,032 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-108
+2025-09-05 15:09:58,072 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-73
+2025-09-05 15:09:58,103 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-77
+2025-09-05 15:09:58,203 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-40
+2025-09-05 15:09:58,278 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-69
+2025-09-05 15:09:58,283 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-63
+2025-09-05 15:09:58,291 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-64
+2025-09-05 15:09:58,444 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-101
+2025-09-05 15:09:58,573 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-20
+2025-09-05 15:09:58,601 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-107
+2025-09-05 15:09:58,648 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-57
+2025-09-05 15:09:58,784 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-109
+2025-09-05 15:09:58,819 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-22
+2025-09-05 15:09:58,848 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-60
+2025-09-05 15:09:58,852 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-7
+2025-09-05 15:09:58,863 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-102
+2025-09-05 15:09:58,877 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-105
+2025-09-05 15:09:58,901 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-25
+2025-09-05 15:09:59,134 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-5
+2025-09-05 15:09:59,158 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-92
+2025-09-05 15:09:59,287 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-104
+2025-09-05 15:09:59,316 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-2
+2025-09-05 15:09:59,374 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-24
+2025-09-05 15:09:59,390 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-19
+2025-09-05 15:09:59,590 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: All Users (120 users) 1-15
+2025-09-05 15:09:59,590 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-15
+2025-09-05 15:10:02,471 INFO o.a.j.r.Summariser: summary +    489 in 00:00:32 =   15.1/s Avg:   265 Min:     0 Max:  6001 Err:     0 (0.00%) Active: 3 Started: 120 Finished: 117
+2025-09-05 15:10:02,471 INFO o.a.j.r.Summariser: summary =   4844 in 00:05:03 =   16.0/s Avg:   217 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:10:02,472 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: All Users (120 users) 1-39
+2025-09-05 15:10:02,472 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-39
+2025-09-05 15:10:02,491 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: All Users (120 users) 1-33
+2025-09-05 15:10:02,491 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-33
+2025-09-05 15:10:03,433 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: All Users (120 users) 1-32
+2025-09-05 15:10:03,433 INFO o.a.j.t.JMeterThread: Thread finished: All Users (120 users) 1-32
+2025-09-05 15:10:03,433 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2025-09-05 15:10:03,434 INFO o.a.j.s.FileServer: Close: stress_test_users_120.csv
+2025-09-05 15:10:03,437 INFO o.a.j.r.Summariser: summary +      2 in 00:00:01 =    2.1/s Avg:  6001 Min:  6001 Max:  6002 Err:     0 (0.00%) Active: 0 Started: 120 Finished: 120
+2025-09-05 15:10:03,438 INFO o.a.j.r.Summariser: summary =   4846 in 00:05:04 =   15.9/s Avg:   220 Min:     0 Max:  6015 Err:     0 (0.00%)
+2025-09-05 15:10:03,439 INFO o.a.j.JMeter: Generating Dashboard
+2025-09-05 15:10:03,439 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2025-09-05 15:10:03,445 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2025-09-05 15:10:03,715 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2025-09-05 15:10:03,715 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2025-09-05 15:10:03,717 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2025-09-05 15:10:03,717 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2025-09-05 15:10:03,727 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2025-09-05 15:10:03,731 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2025-09-05 15:10:03,731 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2025-09-05 15:10:03,732 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2025-09-05 15:10:03,796 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2025-09-05 15:10:03,797 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2025-09-05 15:10:03,798 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2025-09-05 15:10:03,798 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2025-09-05 15:10:03,835 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2025-09-05 15:10:03,835 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 33922 samples
+2025-09-05 15:10:03,835 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2025-09-05 15:10:03,835 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2025-09-05 15:10:03,835 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2025-09-05 15:10:03,836 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2025-09-05 15:10:03,838 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2025-09-05 15:10:03,838 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2025-09-05 15:10:03,843 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2025-09-05 15:10:03,843 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2025-09-05 15:10:03,844 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2025-09-05 15:10:03,844 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2025-09-05 15:10:03,844 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 72690 samples
+2025-09-05 15:10:03,844 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 14538 samples
+2025-09-05 15:10:03,844 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 4846 samples
+2025-09-05 15:10:03,845 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 4846 samples produced in 371ms on channel 0
+2025-09-05 15:10:03,845 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2025-09-05 15:10:03,941 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2025-09-05 15:10:03,941 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2025-09-05 15:10:03,941 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2025-09-05 15:10:03,942 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2025-09-05 15:10:03,945 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456\statistics.json
+2025-09-05 15:10:04,008 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2025-09-05 15:10:04,011 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456
+2025-09-05 15:10:04,204 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456, creating folder structure
+2025-09-05 15:10:04,206 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'C:\Program Files\apache-jmeter-5.6.3\bin\report-template' to 'D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456', got message: D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456, found non empty folder with following content [D:\JMETER_TESTING\BUZZ_APP_STRESS_TEST\results\call_storm_report_20250509_150456\statistics.json], will be ignored
+2025-09-05 15:10:04,527 INFO o.a.j.JMeter: Dashboard generated
