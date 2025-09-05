@@ -60,7 +60,12 @@ echo LAUNCHING 1000 USERS TEST...
 echo Based on your proven working 100-user configuration.
 echo.
 
-jmeter -n -t BUZZ_1000_USERS_EXACT.jmx -l results\buzz_1000_users_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%.jtl -e -o results\html_report_1000_users_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
+:: Build safe timestamp (YYYYMMDD_HHMMSS)
+set "ts=%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%"
+set "ts=%ts: =0%"     :: replace leading space in hour with 0
+set "ts=%ts::=%"      :: remove colons if any sneak in
+
+jmeter -n -t BUZZ_1000_USERS_EXACT.jmx -l results\buzz_1000_users_%ts%.jtl -e -o results\html_report_1000_users_%ts%
 
 echo.
 echo 1000 USERS TEST COMPLETED!
