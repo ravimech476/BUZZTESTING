@@ -39,7 +39,7 @@
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Caller Setup" enabled="true"/>
         <hashTree>
           <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="01 - Connect" enabled="true">
-            <stringProp name="server">buzz.pazl.info</stringProp>
+            <stringProp name="server">35.154.114.200</stringProp>
             <stringProp name="port">5000</stringProp>
             <stringProp name="path">/</stringProp>
             <stringProp name="protocol">ws</stringProp>

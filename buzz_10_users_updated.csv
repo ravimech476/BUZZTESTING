@@ -1,0 +1,11 @@
+phoneNumber,countryCode,name,categoryName,updateCategoryName,address,city,state,pincode
+7455123001,+91,JmeterUser00001,TestCategory00001,UpdatedCategory00001,123 Test Street 001,Chennai,Tamil Nadu,600001
+7455123002,+91,JmeterUser00002,TestCategory00002,UpdatedCategory00002,124 Test Street 002,Coimbatore,Tamil Nadu,641001
+7455123003,+91,JmeterUser00003,TestCategory00003,UpdatedCategory00003,125 Test Street 003,Madurai,Tamil Nadu,625001
+7455123004,+91,JmeterUser00004,TestCategory00004,UpdatedCategory00004,126 Test Street 004,Tiruchirappalli,Tamil Nadu,620001
+7455123005,+91,JmeterUser00005,TestCategory00005,UpdatedCategory00005,127 Test Street 005,Salem,Tamil Nadu,636001
+7455123006,+91,JmeterUser00006,TestCategory00006,UpdatedCategory00006,128 Test Street 006,Tirunelveli,Tamil Nadu,627001
+7455123007,+91,JmeterUser00007,TestCategory00007,UpdatedCategory00007,129 Test Street 007,Erode,Tamil Nadu,638001
+7455123008,+91,JmeterUser00008,TestCategory00008,UpdatedCategory00008,130 Test Street 008,Vellore,Tamil Nadu,632001
+7455123009,+91,JmeterUser00009,TestCategory00009,UpdatedCategory00009,131 Test Street 009,Thanjavur,Tamil Nadu,613001
+7455123010,+91,JmeterUser00010,TestCategory00010,UpdatedCategory00010,132 Test Street 010,Dindigul,Tamil Nadu,624001
