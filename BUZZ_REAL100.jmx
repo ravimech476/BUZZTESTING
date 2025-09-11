@@ -447,7 +447,7 @@
         </hashTree>
         
         <!-- Get Category People to Extract People ID for Contact Details -->
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Category People (for Contact Details)" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. View People Details" enabled="true">
           <stringProp name="HTTPSampler.path">/buzz-api/category/people/${CATEGORY_ID}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
