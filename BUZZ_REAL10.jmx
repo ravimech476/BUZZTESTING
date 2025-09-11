@@ -11,11 +11,11 @@
       
       <!-- HTTP Request Defaults -->
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
-        <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
+        <stringProp name="HTTPSampler.domain">pazlload-540525733.ap-south-1.elb.amazonaws.com</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.port">443</stringProp>
         <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
-        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
         <stringProp name="HTTPSampler.connect_timeout">30000</stringProp>
         <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
       </ConfigTestElement>

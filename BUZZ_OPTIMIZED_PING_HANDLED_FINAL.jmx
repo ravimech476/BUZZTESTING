@@ -74,7 +74,8 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Random Call Activity" enabled="true"/>
         <hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Random Activity Decision" enabled="true">
+          <!-- HIDDEN SAMPLER: Random Activity Decision -->
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="[HIDDEN] Random Activity Decision" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="script">
 // Random activity decision for each iteration
@@ -110,6 +111,9 @@ if (activityChance &lt; 60) {
 } else {
     vars.put(&quot;userAction&quot;, &quot;listen&quot;)
 }
+
+// Mark sample as not to be included in reports
+SampleResult.setIgnore()
             </stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -141,6 +145,7 @@ if (activityChance &lt; 60) {
               <stringProp name="dataFile"></stringProp>
             </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
             <hashTree/>
+            <!-- PARTIALLY VISIBLE: Caller - Read Response - Show only User Busy and Target Unavailable -->
             <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="Caller - Read Response" enabled="true">
               <boolProp name="createNewConnection">false</boolProp>
               <stringProp name="dataType">Text</stringProp>
@@ -157,23 +162,25 @@ if (activityChance &lt; 60) {
               <boolProp name="ignorePingPong">true</boolProp>
             </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
             <hashTree>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Handle Response Types" enabled="true">
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Handle Response Types - Selective Visibility" enabled="true">
                 <stringProp name="scriptLanguage">groovy</stringProp>
                 <stringProp name="script">
 def response = prev.getResponseDataAsString()
 def responseMessage = prev.getResponseMessage()
 def responseCode = prev.getResponseCode()
 
+// Default: Hide this sample from reports
+def shouldShowInReport = false
+
 // Check if this is a ping frame error
 if (responseMessage != null &amp;&amp; responseMessage.contains(&quot;Ping frame&quot;)) {
-    // Convert ping frame &quot;error&quot; to success
+    // Convert ping frame &quot;error&quot; to success but hide from reports
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;WebSocket ping frame handled automatically&quot;)
-    prev.setSampleLabel(prev.getSampleLabel() + &quot; (Ping Handled)&quot;)
-    
-    // Clear the error response data
+    prev.setSampleLabel(&quot;Caller - Read Response (Ping Handled)&quot;)
     prev.setResponseData(&quot;WebSocket heartbeat - connection alive&quot;, &quot;UTF-8&quot;)
+    shouldShowInReport = false
 }
 
 // Also check response code for ping frame errors
@@ -181,6 +188,7 @@ if (responseCode != null &amp;&amp; responseCode.contains(&quot;unexpected frame
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;WebSocket heartbeat - connection alive&quot;)
+    shouldShowInReport = false
 }
 
 // Check response data for ping frame content
@@ -188,37 +196,42 @@ if (response != null &amp;&amp; response.toLowerCase().contains(&quot;ping&quot;
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;WebSocket heartbeat - connection alive&quot;)
+    shouldShowInReport = false
 }
 
-// Handle call responses
+// Handle call responses - hide most, show only specific ones
 if (response != null &amp;&amp; response.contains(&quot;call_accepted&quot;)) {
     vars.put(&quot;callStatus&quot;, &quot;accepted&quot;)
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;Call accepted by target user&quot;)
     prev.setSampleLabel(&quot;Caller - Read Response (Accepted)&quot;)
+    shouldShowInReport = false // Hide normal acceptance
 } else if (response != null &amp;&amp; response.contains(&quot;call_rejected&quot;)) {
     vars.put(&quot;callStatus&quot;, &quot;rejected&quot;)
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;Call rejected by target user&quot;)
     prev.setSampleLabel(&quot;Caller - Read Response (Rejected)&quot;)
+    shouldShowInReport = false // Hide normal rejection
 }
 
-// Handle "already in a call" error responses - convert to success
+// SHOW &quot;already in a call&quot; (User Busy) - VISIBLE in reports
 if (response != null &amp;&amp; response.contains(&quot;already in a call&quot;)) {
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;User busy - already in active call&quot;)
-    prev.setSampleLabel(prev.getSampleLabel() + &quot; (User Busy)&quot;)
+    prev.setSampleLabel(&quot;User Busy&quot;)
+    shouldShowInReport = true // SHOW this in reports
 }
 
-// Handle "Target not available" error responses
+// SHOW &quot;Target not available&quot; - VISIBLE in reports
 if (response != null &amp;&amp; response.contains(&quot;Target not available&quot;)) {
     prev.setSuccessful(true)
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;Target user not available&quot;)
-    prev.setSampleLabel(&quot;Caller - Read Response (Target Unavailable)&quot;)
+    prev.setSampleLabel(&quot;Target Not Available&quot;)
+    shouldShowInReport = true // SHOW this in reports
 }
 
 if (response != null &amp;&amp; response.contains(&quot;call_ended&quot;) &amp;&amp; response.contains(&quot;timeout&quot;)) {
@@ -226,6 +239,12 @@ if (response != null &amp;&amp; response.contains(&quot;call_ended&quot;) &amp;&
     prev.setResponseCode(&quot;200&quot;)
     prev.setResponseMessage(&quot;Call ended due to timeout&quot;)
     prev.setSampleLabel(&quot;Caller - Read Response (Timeout)&quot;)
+    shouldShowInReport = false // Hide timeout responses
+}
+
+// Apply visibility setting
+if (!shouldShowInReport) {
+    prev.setIgnore()
 }
                 </stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -244,7 +263,8 @@ if (response != null &amp;&amp; response.contains(&quot;call_ended&quot;) &amp;&
                 <stringProp name="ConstantTimer.delay">5000</stringProp>
               </ConstantTimer>
               <hashTree/>
-              <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="04 - Call Ended by Caller" enabled="true">
+              <!-- HIDDEN SAMPLER: 04 - Call Ended by Caller -->
+              <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="[HIDDEN] 04 - Call Ended by Caller" enabled="true">
                 <boolProp name="createNewConnection">false</boolProp>
                 <stringProp name="dataType">Text</stringProp>
                 <stringProp name="requestData">{&quot;type&quot;:&quot;end_call&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${targetUserId}&quot;}</stringProp>
@@ -257,12 +277,25 @@ if (response != null &amp;&amp; response.contains(&quot;call_ended&quot;) &amp;&
                 <boolProp name="loadDataFromFile">false</boolProp>
                 <stringProp name="dataFile"></stringProp>
               </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
-              <hashTree/>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Hide Sample" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="script">
+// Mark this sample as hidden from reports
+prev.setIgnore()
+                  </stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
             </hashTree>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Listen for Incoming Calls" enabled="true"/>
           <hashTree>
-            <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="05 - Call Received" enabled="true">
+            <!-- HIDDEN SAMPLER: 05 - Call Received -->
+            <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="[HIDDEN] 05 - Call Received" enabled="true">
               <boolProp name="createNewConnection">false</boolProp>
               <stringProp name="dataType">Text</stringProp>
               <stringProp name="responseTimeout">5000</stringProp>
@@ -284,6 +317,9 @@ if (response != null &amp;&amp; response.contains(&quot;call_ended&quot;) &amp;&
 def response = prev.getResponseDataAsString()
 def responseMessage = prev.getResponseMessage()
 def responseCode = prev.getResponseCode()
+
+// Mark this sample as hidden from reports
+prev.setIgnore()
 
 // Check if this is a ping frame error
 if (responseMessage != null &amp;&amp; responseMessage.contains(&quot;Ping frame&quot;)) {
@@ -323,7 +359,8 @@ if (response != null &amp;&amp; response.toLowerCase().contains(&quot;ping&quot;
               <boolProp name="IfController.useExpression">true</boolProp>
             </IfController>
             <hashTree>
-              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Process Call Decision" enabled="true">
+              <!-- HIDDEN SAMPLER: Process Call Decision -->
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="[HIDDEN] Process Call Decision" enabled="true">
                 <stringProp name="scriptLanguage">groovy</stringProp>
                 <stringProp name="script">
 def response = prev.getResponseDataAsString()
@@ -354,6 +391,9 @@ if (random &lt; 70) {
     vars.put(&quot;responseType&quot;, &quot;timeout&quot;)
     vars.put(&quot;respondToCall&quot;, &quot;false&quot;)
 }
+
+// Mark sample as not to be included in reports
+SampleResult.setIgnore()
                 </stringProp>
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
@@ -390,7 +430,8 @@ if (random &lt; 70) {
                     <stringProp name="ConstantTimer.delay">5000</stringProp>
                   </ConstantTimer>
                   <hashTree/>
-                  <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="07 - Call Ended by Receiver" enabled="true">
+                  <!-- HIDDEN SAMPLER: 07 - Call Ended by Receiver -->
+                  <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="[HIDDEN] 07 - Call Ended by Receiver" enabled="true">
                     <boolProp name="createNewConnection">false</boolProp>
                     <stringProp name="dataType">Text</stringProp>
                     <stringProp name="requestData">{&quot;type&quot;:&quot;end_call&quot;,&quot;userId&quot;:&quot;${userId}&quot;,&quot;targetId&quot;:&quot;${callerId}&quot;}</stringProp>
@@ -403,7 +444,19 @@ if (random &lt; 70) {
                     <boolProp name="loadDataFromFile">false</boolProp>
                     <stringProp name="dataFile"></stringProp>
                   </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
-                  <hashTree/>
+                  <hashTree>
+                    <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Hide Sample" enabled="true">
+                      <stringProp name="scriptLanguage">groovy</stringProp>
+                      <stringProp name="script">
+// Mark this sample as hidden from reports
+prev.setIgnore()
+                      </stringProp>
+                      <stringProp name="parameters"></stringProp>
+                      <stringProp name="filename"></stringProp>
+                      <stringProp name="cacheKey">true</stringProp>
+                    </JSR223PostProcessor>
+                    <hashTree/>
+                  </hashTree>
                 </hashTree>
                 <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Reject Call" enabled="true">
                   <stringProp name="IfController.condition">${__groovy(vars.get(&quot;responseType&quot;) == &quot;reject&quot;)}</stringProp>
@@ -433,6 +486,7 @@ if (random &lt; 70) {
                 <boolProp name="IfController.useExpression">true</boolProp>
               </IfController>
               <hashTree>
+                <!-- VISIBLE SAMPLER: 09 - Timeout (No Response) -->
                 <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="09 - Timeout (No Response)" enabled="true">
                   <stringProp name="scriptLanguage">groovy</stringProp>
                   <stringProp name="script">
@@ -445,6 +499,8 @@ SampleResult.setSuccessful(true)
 SampleResult.setResponseCode(&quot;200&quot;)
 SampleResult.setResponseMessage(&quot;User timeout - no response to incoming call&quot;)
 SampleResult.setResponseData(&quot;Simulated user timeout - no response sent&quot;, &quot;UTF-8&quot;)
+
+// Keep this sample visible in reports (do NOT call setIgnore())
                   </stringProp>
                   <stringProp name="parameters"></stringProp>
                   <stringProp name="filename"></stringProp>

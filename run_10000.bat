@@ -116,7 +116,11 @@ echo.
 echo LAUNCHING JMETER WITH EXTREME LOAD SETTINGS...
 echo.
 
-jmeter -n -t BUZZ_REAL10000.jmx -l results\buzz_10k_users_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%.jtl -e -o results\html_report_10k_users_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
+set timestamp=%date:~10,4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%
+set timestamp=%timestamp::=%
+set timestamp=%timestamp: =0%
+
+jmeter -n -t BUZZ_REAL10000.jmx -l results\buzz_10k_users_%timestamp%.jtl -e -o results\html_report_10k_users_%timestamp%
 
 echo.
 echo 10,000 USERS EXTREME STRESS TEST COMPLETED!

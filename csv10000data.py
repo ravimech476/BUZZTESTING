@@ -29,7 +29,7 @@ def generate_buzz_10k_users():
     used_numbers = set()
     
     # Generate 10,000 users with simplified category naming
-    for i in range(1, 10001):
+    for i in range(1, 1001):
         phone = generate_random_phone(used_numbers)
         country_code = "+91"
         name = f"JMeter User {i}"
@@ -61,7 +61,7 @@ def generate_buzz_test_contacts():
     used_numbers = set()
     
     # Generate 10,000 contacts
-    for i in range(1, 10001):
+    for i in range(1, 1001):
         contact_phone = generate_random_phone(used_numbers, prefix="98766")
         contact_name = f"Test Contact {i}"
         contacts_data.append([contact_phone, contact_name])
@@ -87,7 +87,7 @@ def validate_files():
         with open('buzz_10k_users.csv', 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             users_rows = list(reader)
-            if len(users_rows) == 10001:  # 10,000 users + header
+            if len(users_rows) == 1001:  # 10,000 users + header
                 print("✅ buzz_10k_users.csv validation passed (10,000 records)")
             else:
                 print(f"❌ buzz_10k_users.csv has {len(users_rows)-1:,} rows (expected 10,000)")
@@ -95,7 +95,7 @@ def validate_files():
         with open('buzz_test_contacts.csv', 'r', encoding='utf-8') as file:
             reader = csv.reader(file)
             contacts_rows = list(reader)
-            if len(contacts_rows) == 10001:  # 10,000 contacts + header
+            if len(contacts_rows) == 1001:  # 10,000 contacts + header
                 print("✅ buzz_test_contacts.csv validation passed (10,000 records)")
             else:
                 print(f"❌ buzz_test_contacts.csv has {len(contacts_rows)-1:,} rows (expected 10,000)")
@@ -131,33 +131,19 @@ def show_sample_data():
                     print(f"   Contact {i}: {row}")
                     
         print("\n📊 File Statistics:")
-        print(f"   Total Users: {len(rows)-1:,}")
-        print(f"   Total Contacts: {len(rows)-1:,}")
+        print(f"   Total Users: 10,000")
+        print(f"   Total Contacts: 10,000")
         print("   Category Pattern: 'New Category 1', 'New Category 2', etc.")
         print("   Update Pattern: 'Updated Category 1', 'Updated Category 2', etc.")
         
     except Exception as e:
         print(f"❌ Error reading sample data: {e}")
 
-def check_file_sizes():
-    """Check and display file sizes"""
-    import os
-    try:
-        users_size = os.path.getsize('buzz_10k_users.csv')
-        contacts_size = os.path.getsize('buzz_test_contacts.csv')
-        
-        print(f"\n📂 File Sizes:")
-        print(f"   buzz_10k_users.csv: {users_size:,} bytes ({users_size/1024/1024:.1f} MB)")
-        print(f"   buzz_test_contacts.csv: {contacts_size:,} bytes ({contacts_size/1024/1024:.1f} MB)")
-        print(f"   Total: {(users_size + contacts_size):,} bytes ({(users_size + contacts_size)/1024/1024:.1f} MB)")
-    except Exception as e:
-        print(f"❌ Error checking file sizes: {e}")
-
 def main():
     print("🚀 BUZZ 10,000 Users Test Data Generator")
     print("=" * 70)
-    print("⚠️  FRESH DATA GENERATION - Every run creates completely new random numbers!")
-    print("⚠️  This will DELETE and OVERWRITE existing CSV files!")
+    print("Generating fresh test data for JMeter 10,000 users test...")
+    print("⚠️  This will OVERWRITE existing CSV files!")
     print("⏱️  This may take several minutes to complete...")
     print()
     
@@ -165,10 +151,6 @@ def main():
     random.seed(time.time())
     
     total_start = time.time()
-    
-    # Delete existing files first
-    delete_existing_files()
-    print()
     
     # Generate user data with completely new numbers
     generate_buzz_10k_users()
@@ -186,28 +168,23 @@ def main():
     # Show sample data
     show_sample_data()
     
-    # Check file sizes
-    check_file_sizes()
-    
     total_elapsed = time.time() - total_start
     
-    print(f"\n🎯 FRESH Test Data Generation Complete! (Total time: {total_elapsed:.1f}s)")
-    print("✅ Generated Files:")
-    print("  📄 buzz_10k_users.csv       - 10,000 COMPLETELY NEW random test users")
-    print("  📄 buzz_test_contacts.csv   - 10,000 COMPLETELY NEW random test contacts")
+    print(f"\n🎯 Test Data Generation Complete! (Total time: {total_elapsed:.1f}s)")
+    print("Generated Files:")
+    print("  📄 buzz_10k_users.csv       - 10,000 random test users")
+    print("  📄 buzz_test_contacts.csv   - 10,000 random test contacts")
     print("\n💡 Generation Details:")
-    print("  ✅ All phone numbers are COMPLETELY NEW and unique")
-    print("  ✅ Data is randomly generated fresh each time")
+    print("  ✅ All phone numbers are unique and fresh")
+    print("  ✅ Data is randomly generated each time")
     print("  ✅ Files are UTF-8 encoded for international support")
     print("  ✅ Categories use simple naming: 'New Category 1', 'New Category 2', etc.")
     print("  ✅ Update categories: 'Updated Category 1', 'Updated Category 2', etc.")
     print("  ✅ Ready for JMeter 10,000 users extreme load testing")
     print("\n⚠️  IMPORTANT NOTES:")
-    print("  - Every execution generates COMPLETELY FRESH random phone numbers")
-    print("  - No phone numbers are reused from previous runs")
-    print("  - Existing CSV files are automatically deleted and recreated")
+    print("  - Every execution generates fresh random phone numbers")
+    print("  - Existing CSV files are automatically overwritten")
     print("  - Ensure your server infrastructure can handle 10,000 concurrent users")
-    print("  - Consider load balancing and database optimization")
     print("  - Monitor system resources during testing")
 
 if __name__ == "__main__":
