@@ -11,7 +11,7 @@
       
       <!-- HTTP Request Defaults -->
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
-        <stringProp name="HTTPSampler.domain">buzz.pazl.info</stringProp>
+        <stringProp name="HTTPSampler.domain">pazloadbalancer-1456711221.ap-south-1.elb.amazonaws.com</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.port">443</stringProp>
         <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
@@ -214,7 +214,7 @@
         </hashTree>
         
         <!-- Step 5: Buzz Installed Contacts -->
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5. Buzz Installed Contacts" enabled="true">
+        <!-- <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5. Buzz Installed Contacts" enabled="true">
           <stringProp name="HTTPSampler.path">/buzz-api/buzz-installed-contacts</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -235,7 +235,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-        </hashTree>
+        </hashTree> -->
         
         <!-- Step 6: Create Category -->
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="6. Create Category" enabled="true">
@@ -482,7 +482,7 @@
         </hashTree>
         
         <!-- Step 11: View People Details -->
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. View People Details" enabled="true">
+        <!-- <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. View People Details" enabled="true">
           <stringProp name="HTTPSampler.path">/buzz-api/contact-details/${CONTACT_DETAILS_PEOPLE_ID}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -503,7 +503,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-        </hashTree>
+        </hashTree> -->
         
         <!-- Small delay before removing -->
         <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Wait Before Remove">

@@ -51,7 +51,7 @@
 
       <!-- Thread Group for 10 Users -->
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BUZZ 10 Users - 14 Step Complete Workflow">
-        <intProp name="ThreadGroup.num_threads">10</intProp>
+        <intProp name="ThreadGroup.num_threads"></intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
         <longProp name="ThreadGroup.duration">400</longProp>
         <longProp name="ThreadGroup.delay">0</longProp>
@@ -224,7 +224,7 @@
         </hashTree>
         
         <!-- Step 5: Buzz Installed Contacts -->
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5. Buzz Installed Contacts" enabled="true">
+        <!-- <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="5. Buzz Installed Contacts" enabled="true">
           <stringProp name="HTTPSampler.path">/buzz-api/buzz-installed-contacts</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -245,7 +245,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-        </hashTree>
+        </hashTree> -->
         
         <!-- Step 6: Create Category -->
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="6. Create Category" enabled="true">
@@ -493,7 +493,7 @@
         </hashTree>
         
         <!-- Step 11: View People Details -->
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. View People Details" enabled="true">
+        <!-- <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. View People Details" enabled="true">
           <stringProp name="HTTPSampler.path">/buzz-api/contact-details/${CONTACT_DETAILS_PEOPLE_ID}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -513,7 +513,7 @@
               </elementProp>
             </collectionProp>
           </HeaderManager>
-          <hashTree/>
+          <hashTree/> -->
           
           <!-- Debug Contact Details -->
           <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Debug Contact Details" enabled="true">
